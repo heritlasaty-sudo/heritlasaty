@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
 import emailjs from '@emailjs/browser';
-import { supabase } from './lib/supabase';
+// Supabase import removed
 
 function Logo() {
   return (
@@ -207,27 +207,7 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
       const emailRes = await emailjs.send(serviceId, templateId, payload, publicKey);
       console.info('EmailJS Status:', emailRes.status, emailRes.text);
 
-      // 2. Backup to Database
-      console.info('Archiving to Supabase Table: [leads]...');
-      const { error: dbError } = await supabase
-        .from('leads')
-        .insert([{
-          name: name.trim(),
-          email: email.trim(),
-          reason: reason.trim()
-        }]);
-
-      if (dbError) {
-        console.error('Database Sync Issue:', dbError.message);
-        // Special info for the user
-        if (dbError.message.includes('leads')) {
-          console.info('Tip: Verify the "leads" table exists in Supabase with columns: name, email, reason.');
-        }
-      } else {
-        console.info('Database Sync: SUCCESS');
-      }
-
-      // 3. UI Sequence
+      // 2. UI Sequence
       onShowNotification();
       setTimeout(() => {
         setSubmitted(true);

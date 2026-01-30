@@ -1,3 +1,7 @@
+import { useState, useRef } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import emailjs from '@emailjs/browser';
+
 function CTASection() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -38,17 +42,30 @@ function CTASection() {
         e.preventDefault();
         setLoading(true);
 
-        const { error } = await supabase
-            .from('reservations')
-            .insert([{ name, email, reason }]);
+        const payload = {
+            from_name: name.trim(),
+            user_name: name.trim(),
+            reply_to: email.trim(),
+            user_email: email.trim(),
+            message: reason.trim(),
+            to_name: 'HERIT LASATY Team'
+        };
 
-        if (!error) {
+        const serviceId = 'service_il2tiok';
+        const templateId = 'template_polguvr';
+        const publicKey = '3DazTR_pM0ASL7B1c';
+
+        try {
+            await emailjs.send(serviceId, templateId, payload, publicKey);
             setSubmitted(true);
             setName('');
             setEmail('');
             setReason('');
+        } catch (error) {
+            console.error('Email error:', error);
+        } finally {
+            setLoading(false);
         }
-        setLoading(false);
     };
 
     return (
