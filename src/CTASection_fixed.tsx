@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 
-function CTASection() {
+export default function CTASection() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [reason, setReason] = useState('');
@@ -103,7 +103,7 @@ function CTASection() {
                                 borderRadius: '4px',
                                 background: 'linear-gradient(135deg, rgba(201, 169, 97, 0.05) 0%, transparent 50%, rgba(201, 169, 97, 0.05) 100%)',
                                 boxShadow: '0 40px 100px rgba(0,0,0,0.6)',
-                                translateZ: '-20px'
+                                transform: 'translateZ(-20px)'
                             }}
                         >
                             {/* Spandrels with Sebka Geometric Pattern */}
@@ -135,7 +135,7 @@ function CTASection() {
                                 borderTopRightRadius: '50% 100%',
                                 background: 'radial-gradient(circle at 50% 0%, rgba(201, 169, 97, 0.15) 0%, rgba(10, 14, 26, 0.1) 100%)',
                                 boxShadow: 'inset 0 2px 10px rgba(255,255,255,0.1), 0 -20px 80px rgba(0,0,0,0.8)',
-                                translateZ: '20px'
+                                transform: 'translateZ(20px)'
                             }}
                         >
                             {/* Dynamic Light Reflection Layer */}
@@ -156,7 +156,7 @@ function CTASection() {
                                     borderTopRightRadius: '50% 100%',
                                     boxShadow: 'inset 0 40px 120px rgba(0,0,0,1), inset 0 0 200px rgba(201,169,97,0.08)',
                                     margin: '1px',
-                                    translateZ: '-10px'
+                                    transform: 'translateZ(-10px)'
                                 }}
                             />
 
@@ -334,7 +334,7 @@ function CTASection() {
                     letterSpacing: '0.5px'
                 }}
             >
-                rime@heritlasaty.com
+                herit@heritlasaty.com
             </div>
         </section>
     );

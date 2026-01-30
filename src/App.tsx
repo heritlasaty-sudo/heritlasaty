@@ -488,7 +488,7 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
       </motion.div>
 
       <div className="text-center mt-24 text-[14px] text-desert-gold tracking-[0.5px]">
-        rime@heritlasaty.com
+        herit@heritlasaty.com
       </div>
     </section>
   );
