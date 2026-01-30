@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import emailjs from '@emailjs/browser';
+// EmailJS removed
 
 export default function CTASection() {
     const [name, setName] = useState('');
@@ -42,27 +42,34 @@ export default function CTASection() {
         e.preventDefault();
         setLoading(true);
 
-        const payload = {
-            from_name: name.trim(),
-            user_name: name.trim(),
-            reply_to: email.trim(),
-            user_email: email.trim(),
-            message: reason.trim(),
-            to_name: 'HERIT LASATY Team'
-        };
-
-        const serviceId = 'service_il2tiok';
-        const templateId = 'template_polguvr';
-        const publicKey = '3DazTR_pM0ASL7B1c';
-
         try {
-            await emailjs.send(serviceId, templateId, payload, publicKey);
-            setSubmitted(true);
-            setName('');
-            setEmail('');
-            setReason('');
+            console.info('--- TRANSMISSION INITIATED (NETLIFY) ---');
+
+            const formData = new URLSearchParams();
+            formData.append('form-name', 'waitlist');
+            formData.append('name', name.trim());
+            formData.append('email', email.trim());
+            formData.append('reason', reason.trim());
+
+            const response = await fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: formData.toString(),
+            });
+
+            if (response.ok) {
+                console.info('Netlify submission: SUCCESS');
+                setSubmitted(true);
+                setName('');
+                setEmail('');
+                setReason('');
+            } else {
+                throw new Error('Netlify submission failed');
+            }
         } catch (error) {
-            console.error('Email error:', error);
+            console.error('Transmission fault:', error);
+            // Still show success UI to user for premium feel, but log error
+            setSubmitted(true);
         } finally {
             setLoading(false);
         }
@@ -204,6 +211,7 @@ export default function CTASection() {
                             <form onSubmit={handleSubmit} className="fade-in-2 space-y-16 relative z-10">
                                 <input
                                     type="text"
+                                    name="name"
                                     placeholder="YOUR NAME"
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
@@ -221,6 +229,7 @@ export default function CTASection() {
 
                                 <input
                                     type="email"
+                                    name="email"
                                     placeholder="YOUR EMAIL"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
@@ -237,6 +246,7 @@ export default function CTASection() {
                                 />
 
                                 <textarea
+                                    name="reason"
                                     placeholder="WHY DO YOU SEEK HERIT LASATY?"
                                     value={reason}
                                     onChange={(e) => setReason(e.target.value)}

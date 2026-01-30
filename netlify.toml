@@ -1,0 +1,14 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[forms]
+  # Note: Actual email notifications are configured in the Netlify UI.
+  # This section is just documenting the intent per user request.
+  name = "Waitlist"
+  to = "herit@heritlasaty.com"

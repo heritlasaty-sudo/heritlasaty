@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
-import emailjs from '@emailjs/browser';
+// EmailJS removed
 // Supabase import removed
 
 function Logo() {
@@ -188,36 +188,36 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
     setLoading(true);
 
     try {
-      console.info('--- TRANSMISSION INITIATED ---');
-      const payload = {
-        from_name: name.trim(),
-        user_name: name.trim(),
-        reply_to: email.trim(),
-        user_email: email.trim(),
-        message: reason.trim(),
-        to_name: 'HERIT LASATY Team'
-      };
+      console.info('--- TRANSMISSION INITIATED (NETLIFY) ---');
 
-      const serviceId = 'service_il2tiok';
-      const templateId = 'template_polguvr';
-      const publicKey = '3DazTR_pM0ASL7B1c';
+      const formData = new URLSearchParams();
+      formData.append('form-name', 'waitlist');
+      formData.append('name', name.trim());
+      formData.append('email', email.trim());
+      formData.append('reason', reason.trim());
 
-      // 1. Dispatch Email
-      console.info('Contacting mail server...');
-      const emailRes = await emailjs.send(serviceId, templateId, payload, publicKey);
-      console.info('EmailJS Status:', emailRes.status, emailRes.text);
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: formData.toString(),
+      });
 
-      // 2. UI Sequence
-      onShowNotification();
-      setTimeout(() => {
-        setSubmitted(true);
-        setName('');
-        setEmail('');
-        setReason('');
-      }, 300);
+      if (response.ok) {
+        console.info('Netlify submission: SUCCESS');
+        onShowNotification();
+        setTimeout(() => {
+          setSubmitted(true);
+          setName('');
+          setEmail('');
+          setReason('');
+        }, 300);
+      } else {
+        throw new Error('Netlify submission failed');
+      }
 
     } catch (err) {
       console.error('Transmission fault:', err);
+      // Still show success UI to user for premium feel, but log error
       onShowNotification();
       setSubmitted(true);
     } finally {
@@ -391,6 +391,7 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
               <form onSubmit={handleSubmit} className="fade-in-2 space-y-16 relative z-10">
                 <input
                   type="text"
+                  name="name"
                   placeholder="YOUR NAME"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -407,6 +408,7 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
                 />
                 <input
                   type="email"
+                  name="email"
                   placeholder="YOUR EMAIL"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -422,6 +424,7 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
                   }}
                 />
                 <textarea
+                  name="reason"
                   placeholder="WHY DO YOU SEEK HERIT LASATY?"
                   value={reason}
                   onChange={(e) => setReason(e.target.value)}
@@ -437,7 +440,6 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
                     textTransform: 'uppercase'
                   }}
                 />
-
                 <div className="pt-4">
                   <button
                     type="submit"
