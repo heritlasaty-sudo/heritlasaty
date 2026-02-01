@@ -170,14 +170,13 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
       });
 
       if (response.ok) {
-        // Precise timing for premium feel
         onShowNotification();
         setTimeout(() => {
           setSubmitted(true);
           setName('');
           setEmail('');
           setReason('');
-        }, 150); // Faster transition for seamless feel
+        }, 150);
       } else {
         throw new Error('Netlify submission failed');
       }
@@ -192,173 +191,218 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
 
   return (
     <section
-      className="w-full flex flex-col items-center justify-center pt-24 md:pt-48 pb-0 overflow-hidden relative"
+      className="w-full flex flex-col items-center justify-center pt-24 md:pt-48 pb-10 overflow-hidden relative"
       style={{
         backgroundColor: 'var(--obsidian-midnight)',
       }}
     >
-      {/* Heritage Glow Background */}
+      {/* Heavenly Ethereal Atmosphere */}
       <div
+        className="absolute inset-x-0 top-0 h-[800px] pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle at 50% 30%, rgba(201, 169, 97, 0.12) 0%, transparent 60%)',
+          zIndex: 0
+        }}
+      />
+      <motion.div
+        animate={{
+          opacity: [0.3, 0.6, 0.3],
+          scale: [1, 1.1, 1]
+        }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: 'radial-gradient(circle at 50% 50%, rgba(201, 169, 97, 0.08) 0%, transparent 70%)',
+          background: 'radial-gradient(circle at 50% 60%, rgba(201, 169, 97, 0.05) 0%, transparent 70%)',
           zIndex: 0
         }}
       />
 
-      <div className="mb-12 md:mb-20 w-px h-24 md:h-32 bg-gradient-to-b from-transparent via-desert-gold/50 to-transparent relative z-10" />
+      <div className="mb-16 md:mb-28 w-px h-32 md:h-48 bg-gradient-to-b from-transparent via-desert-gold/60 to-transparent relative z-10" />
 
-      <div className="w-full max-w-[760px] px-6 md:px-10 relative z-10">
+      <div className="w-full max-w-[760px] px-6 md:px-12 relative z-10">
         {!submitted ? (
           <div className="relative">
-            {/* The Moroccan Outer Frame (Golden Glow) */}
+            {/* The Moroccan Alfiz Frame (Dreamy Halo) */}
             <div
-              className="absolute -inset-4 md:-inset-12 border border-desert-gold/30"
+              className="absolute -inset-4 md:-inset-16 border border-desert-gold/20"
               style={{
-                borderRadius: '4px',
-                boxShadow: '0 0 40px rgba(201, 169, 97, 0.1)',
-                background: 'rgba(10, 14, 26, 0.4)'
+                borderRadius: '2px',
+                boxShadow: '0 0 100px rgba(201, 169, 97, 0.05), inset 0 0 60px rgba(0,0,0,0.8)',
+                background: 'rgba(10, 14, 26, 0.2)',
+                backdropFilter: 'blur(4px)'
               }}
             >
-              {/* Corner Accents */}
-              <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-desert-gold/60" />
-              <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-desert-gold/60" />
-              <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-desert-gold/60" />
-              <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-desert-gold/60" />
-
-              {/* Patterned Spandrels */}
+              {/* Sacred Geometric Pattern Background */}
               <div
-                className="absolute inset-0 opacity-[0.07]"
+                className="absolute inset-0 opacity-[0.05]"
                 style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0 L100 50 L50 100 L0 50 Z' fill='none' stroke='%23C9A961' stroke-width='1'/%3E%3C/svg%3E")`,
-                  backgroundSize: '40px 40px'
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 0L75 45L120 60L75 75L60 120L45 75L0 60L45 45Z' fill='none' stroke='%23C9A961' stroke-width='0.5'/%3E%3C/svg%3E")`,
+                  backgroundSize: '60px 60px'
                 }}
               />
+
+              {/* Corner Arabesque details */}
+              <div className="absolute top-2 left-2 w-12 h-12 border-t border-l border-desert-gold/30 rounded-tl-xl opacity-50" />
+              <div className="absolute top-2 right-2 w-12 h-12 border-t border-r border-desert-gold/30 rounded-tr-xl opacity-50" />
+              <div className="absolute bottom-2 left-2 w-12 h-12 border-b border-l border-desert-gold/30 rounded-bl-xl opacity-50" />
+              <div className="absolute bottom-2 right-2 w-12 h-12 border-b border-r border-desert-gold/30 rounded-br-xl opacity-50" />
             </div>
 
-            {/* The Horseshoe Arch Container */}
+            {/* The Horseshoe Arch (Heavenly Portal) */}
             <div
-              className="relative p-10 md:p-24 border-2 border-desert-gold/60 shadow-[0_0_100px_rgba(0,0,0,0.9)] overflow-hidden"
+              className="relative p-10 md:p-28 border border-desert-gold/40 shadow-[0_0_120px_rgba(201,169,97,0.15)] overflow-hidden"
               style={{
                 borderTopLeftRadius: '50% 100%',
                 borderTopRightRadius: '50% 100%',
-                background: 'linear-gradient(180deg, rgba(201, 169, 97, 0.18) 0%, rgba(10, 14, 26, 1) 100%)',
-                boxShadow: 'inset 0 0 50px rgba(201, 169, 97, 0.1), 0 0 100px rgba(0,0,0,1)',
+                background: 'radial-gradient(circle at 50% 0%, rgba(201, 169, 97, 0.18) 0%, rgba(10, 14, 26, 0.98) 100%)',
+                backdropFilter: 'blur(12px)',
+                boxShadow: 'inset 0 0 40px rgba(201,169,97,0.1), 0 30px 100px rgba(0,0,0,0.9)',
+                transition: 'all 0.5s ease'
               }}
             >
-              {/* Internal Decorative Arch Line */}
+              {/* Inner Glowing Decorative Arch */}
               <div
-                className="absolute inset-2 md:inset-4 border border-desert-gold/20 pointer-events-none"
+                className="absolute inset-3 md:inset-6 border-t border-x border-desert-gold/30 pointer-events-none opacity-40 shadow-[0_0_20px_rgba(201,169,97,0.1)]"
                 style={{
                   borderTopLeftRadius: '50% 100%',
                   borderTopRightRadius: '50% 100%',
                 }}
               />
 
-              <div className="text-center mb-16 relative">
+              <div className="text-center mb-16 md:mb-24 relative">
                 <div className="flex justify-center items-center gap-6 mb-12">
-                  <div className="w-10 h-10 rotate-45 border-2 border-desert-gold/60 flex items-center justify-center">
-                    <div className="w-4 h-4 rotate-45 bg-desert-gold/40 shadow-[0_0_15px_rgba(201,169,97,0.5)]" />
+                  <motion.div animate={{ opacity: [0.2, 0.8, 0.2] }} transition={{ duration: 4, repeat: Infinity }} className="h-px w-20 bg-gradient-to-r from-transparent to-desert-gold/80" />
+                  <div className="relative">
+                    <div className="w-12 h-12 rotate-45 border border-desert-gold/50 flex items-center justify-center">
+                      <motion.div
+                        animate={{ scale: [0.8, 1.2, 0.8], opacity: [0.4, 1, 0.4] }}
+                        transition={{ duration: 6, repeat: Infinity }}
+                        className="w-5 h-5 bg-desert-gold/30 shadow-[0_0_25px_rgba(201,169,97,0.6)]"
+                      />
+                    </div>
                   </div>
+                  <motion.div animate={{ opacity: [0.2, 0.8, 0.2] }} transition={{ duration: 4, repeat: Infinity }} className="h-px w-20 bg-gradient-to-l from-transparent to-desert-gold/80" />
                 </div>
 
                 <h2
                   className="mb-8"
                   style={{
-                    fontSize: 'clamp(32px, 8vw, 52px)',
+                    fontSize: 'clamp(36px, 10vw, 58px)',
                     fontWeight: 400,
                     color: 'var(--cream-primary)',
-                    letterSpacing: '6px',
+                    letterSpacing: '8px',
                     fontFamily: "'Bodoni Moda', serif",
                     fontStyle: 'italic',
-                    textShadow: '0 4px 10px rgba(0,0,0,0.5)'
+                    textShadow: '0 0 30px rgba(201, 169, 97, 0.4)'
                   }}
                 >
                   The Gate
                 </h2>
 
-                <div className="w-16 h-px bg-desert-gold/40 mx-auto mb-10" />
+                <div className="w-20 h-px bg-gradient-to-r from-transparent via-desert-gold/50 to-transparent mx-auto mb-10" />
 
                 <p
-                  className="mx-auto max-w-[440px]"
+                  className="mx-auto max-w-[480px]"
                   style={{
-                    fontSize: 'clamp(14px, 3.5vw, 15px)',
-                    lineHeight: '2',
+                    fontSize: 'clamp(14px, 3.5vw, 16px)',
+                    lineHeight: '2.2',
                     color: 'var(--text-secondary)',
-                    letterSpacing: '2px',
-                    fontFamily: "'Outfit', sans-serif"
+                    letterSpacing: '2.5px',
+                    fontFamily: "'Outfit', sans-serif",
+                    fontWeight: 300,
+                    opacity: 0.9
                   }}
                 >
-                  HERIT LASATY is reserved for those who understand its value. Request consideration.
+                  HERIT LASATY is a selective archive. We seek those whose vision transcends the ordinary.
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-12 relative z-10 h-full">
-                <div className="space-y-10">
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="YOUR NAME"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                    className="w-full bg-transparent pb-4 outline-none border-b border-moonlit-steel focus:border-desert-gold transition-colors text-center"
-                    style={{
-                      color: 'var(--text-primary)',
-                      fontSize: '13px',
-                      letterSpacing: '4px',
-                      textTransform: 'uppercase'
-                    }}
-                  />
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="YOUR EMAIL"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    className="w-full bg-transparent pb-4 outline-none border-b border-moonlit-steel focus:border-desert-gold transition-colors text-center"
-                    style={{
-                      color: 'var(--text-primary)',
-                      fontSize: '13px',
-                      letterSpacing: '4px',
-                      textTransform: 'uppercase'
-                    }}
-                  />
-                  <textarea
-                    name="reason"
-                    placeholder="WHY DO YOU SEEK HERIT LASATY?"
-                    value={reason}
-                    onChange={(e) => setReason(e.target.value)}
-                    required
-                    rows={2}
-                    className="w-full bg-transparent pb-4 outline-none border-b border-moonlit-steel focus:border-desert-gold transition-colors text-center resize-none"
-                    style={{
-                      color: 'var(--text-primary)',
-                      fontSize: '13px',
-                      letterSpacing: '4px',
-                      textTransform: 'uppercase',
-                      lineHeight: '1.8'
-                    }}
-                  />
+              <form onSubmit={handleSubmit} className="space-y-14 md:space-y-20 relative z-10">
+                <div className="space-y-12">
+                  <div className="relative group/field">
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="YOUR NAME"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      required
+                      className="w-full bg-transparent pb-4 outline-none border-b border-moonlit-steel focus:border-desert-gold transition-all text-center tracking-[4px] placeholder:opacity-40"
+                      style={{
+                        color: 'var(--text-primary)',
+                        fontSize: '13px',
+                        textTransform: 'uppercase',
+                        fontFamily: 'inherit'
+                      }}
+                    />
+                  </div>
+                  <div className="relative group/field">
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="YOUR EMAIL"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      className="w-full bg-transparent pb-4 outline-none border-b border-moonlit-steel focus:border-desert-gold transition-all text-center tracking-[4px] placeholder:opacity-40"
+                      style={{
+                        color: 'var(--text-primary)',
+                        fontSize: '13px',
+                        textTransform: 'uppercase',
+                        fontFamily: 'inherit'
+                      }}
+                    />
+                  </div>
+                  <div className="relative group/field">
+                    <textarea
+                      name="reason"
+                      placeholder="WHY DO YOU SEEK ADMISSION?"
+                      value={reason}
+                      onChange={(e) => setReason(e.target.value)}
+                      required
+                      rows={2}
+                      className="w-full bg-transparent pb-4 outline-none border-b border-moonlit-steel focus:border-desert-gold transition-all text-center tracking-[4px] placeholder:opacity-40 resize-none overflow-hidden"
+                      style={{
+                        color: 'var(--text-primary)',
+                        fontSize: '13px',
+                        textTransform: 'uppercase',
+                        fontFamily: 'inherit',
+                        lineHeight: '2'
+                      }}
+                    />
+                  </div>
                 </div>
 
-                <div className="pt-8">
+                <div className="pt-10">
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full py-5 border border-desert-gold text-text-primary bg-transparent transition-all duration-500 hover:bg-desert-gold hover:text-obsidian-midnight active:scale-[0.98]"
+                    className="w-full py-6 md:py-7 border border-desert-gold/60 text-text-primary bg-transparent relative overflow-hidden group shadow-[0_0_40px_rgba(201,169,97,0.1)]"
                     style={{
                       fontSize: '14px',
-                      letterSpacing: '6px',
+                      letterSpacing: '8px',
                       fontWeight: 300,
-                      textTransform: 'uppercase'
+                      textTransform: 'uppercase',
+                      transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
+                    }}
+                    onMouseEnter={(e) => {
+                      if (!loading && !window.matchMedia("(pointer: coarse)").matches) {
+                        e.currentTarget.style.backgroundColor = 'rgba(201, 169, 97, 1)';
+                        e.currentTarget.style.color = 'var(--obsidian-midnight)';
+                        e.currentTarget.style.boxShadow = '0 0 60px rgba(201, 169, 97, 0.4)';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = 'transparent';
+                      e.currentTarget.style.color = 'var(--text-primary)';
+                      e.currentTarget.style.boxShadow = '0 0 40px rgba(201, 169, 97, 0.1)';
                     }}
                   >
-                    {loading ? 'TRANSMITTING...' : 'SUBMIT REQUEST'}
+                    <span className="relative z-10">{loading ? 'TRANSMITTING...' : 'REQUEST ADMISSION'}</span>
+                    <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </button>
-                  <p className="text-center mt-8 text-[11px] text-desert-gold/80 tracking-[2px] uppercase">
-                    Refinement within 48 hours.
+                  <p className="text-center mt-10 text-[11px] text-desert-gold/60 tracking-[3px] uppercase italic">
+                    Traditional craft takes time. Expect a response briefly.
                   </p>
                 </div>
               </form>
@@ -366,25 +410,32 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
           </div>
         ) : (
           <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="text-center py-32 px-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center py-40 px-6 relative"
           >
-            <div className="w-16 h-16 rotate-45 border-2 border-desert-gold/60 mx-auto mb-12 flex items-center justify-center">
-              <div className="w-6 h-6 bg-desert-gold/40 shadow-[0_0_20px_rgba(201,169,97,0.5)]" />
+            {/* Success Glow halo */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-desert-gold/10 rounded-full blur-[100px] pointer-events-none" />
+
+            <div className="w-20 h-20 rotate-45 border border-desert-gold/40 mx-auto mb-16 flex items-center justify-center">
+              <motion.div
+                animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
+                transition={{ duration: 3, repeat: Infinity }}
+                className="w-8 h-8 bg-desert-gold/40 shadow-[0_0_30px_rgba(201,169,97,0.6)]"
+              />
             </div>
-            <h3 style={{ fontSize: '24px', fontWeight: 300, color: 'var(--cream-primary)', letterSpacing: '6px', textTransform: 'uppercase', fontFamily: "'Outfit', sans-serif" }}>
-              Request Received.
+            <h3 style={{ fontSize: '28px', fontWeight: 300, color: 'var(--cream-primary)', letterSpacing: '8px', textTransform: 'uppercase', fontFamily: "'Bodoni Moda', serif", fontStyle: 'italic' }}>
+              Admission Noted.
             </h3>
-            <p style={{ fontSize: '14px', color: 'var(--desert-gold)', marginTop: '24px', letterSpacing: '1px', opacity: 0.8 }}>
-              We will contact you shortly if our souls resonate.
+            <p style={{ fontSize: '15px', color: 'var(--desert-gold)', marginTop: '32px', letterSpacing: '2px', opacity: 0.8, fontFamily: "'Outfit', sans-serif" }}>
+              Our archives are processing your request.
             </p>
           </motion.div>
         )}
       </div>
 
-      <div className="text-center mt-24 mb-16 text-[14px] text-desert-gold tracking-[1.5px] relative z-10 w-full">
-        herit@heritlasaty.com
+      <div className="text-center mt-32 mb-16 text-[14px] text-desert-gold tracking-[2px] opacity-70 relative z-10 w-full hover:opacity-100 transition-opacity">
+        <a href="mailto:herit@heritlasaty.com" className="hover:tracking-[3px] transition-all duration-500">herit@heritlasaty.com</a>
       </div>
     </section>
   );
