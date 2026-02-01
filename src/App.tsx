@@ -242,20 +242,7 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
               {/* Ornamental Border Insets */}
               <div className="absolute inset-2 border border-desert-gold/10 pointer-events-none" />
 
-              {/* Corner Symbols (Andalusian Stars) */}
-              {[...Array(4)].map((_, i) => (
-                <div
-                  key={i}
-                  className={`absolute w-14 h-14 opacity-40 ${i === 0 ? 'top-0 left-0' : i === 1 ? 'top-0 right-0' : i === 2 ? 'bottom-0 left-0' : 'bottom-0 right-0'
-                    }`}
-                  style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0l4.5 15.5L40 20l-15.5 4.5L20 40l-4.5-15.5L0 20l15.5-4.5z' fill='none' stroke='%23C9A961' stroke-width='1'/%3E%3C/svg%3E")`,
-                    backgroundSize: 'contain',
-                    backgroundRepeat: 'no-repeat',
-                    transform: i % 2 === 0 ? 'rotate(0deg)' : 'rotate(45deg)'
-                  }}
-                />
-              ))}
+
             </div>
 
             {/* The Golden Arch (Heavenly Passage) */}
