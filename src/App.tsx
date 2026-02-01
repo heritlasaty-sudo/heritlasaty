@@ -239,20 +239,34 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
                 }}
               />
 
+              {/* Ornamental floral side strips (Ataurique) */}
+              <div className="absolute inset-y-8 left-2 w-4 opacity-20 pointer-events-none"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='16' height='100' viewBox='0 0 16 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 0c0 10-8 15-8 25s8 15 8 25-8 15-8 25 8 15 8 25' fill='none' stroke='%23C9A961' stroke-width='0.5'/%3E%3Ccircle cx='8' cy='25' r='1.5' fill='%23C9A961'/%3E%3Ccircle cx='8' cy='75' r='1.5' fill='%23C9A961'/%3E%3C/svg%3E")`,
+                  backgroundRepeat: 'repeat-y'
+                }}
+              />
+              <div className="absolute inset-y-8 right-2 w-4 opacity-20 pointer-events-none scale-x-[-1]"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='16' height='100' viewBox='0 0 16 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 0c0 10-8 15-8 25s8 15 8 25-8 15-8 25 8 15 8 25' fill='none' stroke='%23C9A961' stroke-width='0.5'/%3E%3Ccircle cx='8' cy='25' r='1.5' fill='%23C9A961'/%3E%3Ccircle cx='8' cy='75' r='1.5' fill='%23C9A961'/%3E%3C/svg%3E")`,
+                  backgroundRepeat: 'repeat-y'
+                }}
+              />
+
               {/* Ornamental Border Insets */}
               <div className="absolute inset-2 border border-desert-gold/10 pointer-events-none" />
 
-              {/* Corner Symbols (Andalusian Stars) */}
+              {/* Corner Symbols (12-Point Alhambra Stars) */}
               {[...Array(4)].map((_, i) => (
                 <div
                   key={i}
-                  className={`absolute w-14 h-14 opacity-40 ${i === 0 ? 'top-0 left-0' : i === 1 ? 'top-0 right-0' : i === 2 ? 'bottom-0 left-0' : 'bottom-0 right-0'
+                  className={`absolute w-16 h-16 opacity-40 ${i === 0 ? 'top-0 left-0' : i === 1 ? 'top-0 right-0' : i === 2 ? 'bottom-0 left-0' : 'bottom-0 right-0'
                     }`}
                   style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0l4.5 15.5L40 20l-15.5 4.5L20 40l-4.5-15.5L0 20l15.5-4.5z' fill='none' stroke='%23C9A961' stroke-width='1'/%3E%3C/svg%3E")`,
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0l3 12 12-3-5 11 10 5-11 3 3 12-12-3 5-11-10-5 11-3-3-12z' fill='none' stroke='%23C9A961' stroke-width='0.8'/%3E%3Ccircle cx='20' cy='20' r='2' fill='%23C9A961'/%3E%3C/svg%3E")`,
                     backgroundSize: 'contain',
                     backgroundRepeat: 'no-repeat',
-                    transform: i % 2 === 0 ? 'rotate(0deg)' : 'rotate(45deg)'
+                    transform: `rotate(${i * 90}deg)`
                   }}
                 />
               ))}
@@ -268,6 +282,20 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
                 boxShadow: 'inset 0 0 60px rgba(201,169,97,0.15), 0 40px 100px rgba(0,0,0,1)',
               }}
             >
+              {/* Spandrel Decorative Flowers (Arabesque) */}
+              <div className="absolute top-4 left-4 w-24 h-24 opacity-20 pointer-events-none"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 100 Q50 50 100 0 M20 80 Q60 60 80 20 M10 90 Q40 70 70 40' fill='none' stroke='%23C9A961' stroke-width='0.5'/%3E%3Cpath d='M100 0c-5 10-15 15-15 25s10 15 15 25' fill='none' stroke='%23C9A961' stroke-width='0.5'/%3E%3C/svg%3E")`,
+                  backgroundSize: 'contain'
+                }}
+              />
+              <div className="absolute top-4 right-4 w-24 h-24 opacity-20 pointer-events-none scale-x-[-1]"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 100 Q50 50 100 0 M20 80 Q60 60 80 20 M10 90 Q40 70 70 40' fill='none' stroke='%23C9A961' stroke-width='0.5'/%3E%3Cpath d='M100 0c-5 10-15 15-15 25s10 15 15 25' fill='none' stroke='%23C9A961' stroke-width='0.5'/%3E%3C/svg%3E")`,
+                  backgroundSize: 'contain'
+                }}
+              />
+
               {/* Inner Sacred Geometry Halo */}
               <div
                 className="absolute inset-4 md:inset-8 border-t border-x border-desert-gold/20 pointer-events-none opacity-60"
@@ -279,21 +307,26 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
               />
 
               <div className="text-center mb-16 md:mb-24 relative">
-                {/* Ritual Symbol */}
+                {/* Refined Ritual Symbol (12-Point Alhambra Medallion) */}
                 <div className="flex justify-center items-center gap-8 mb-14">
                   <motion.div initial={{ width: 0 }} animate={{ width: 60 }} transition={{ duration: 1.5 }} className="h-px bg-gradient-to-r from-transparent to-desert-gold/50" />
-                  <div className="w-14 h-14 relative flex items-center justify-center">
+                  <div className="w-16 h-16 relative flex items-center justify-center">
                     <motion.div
                       animate={{ rotate: 360 }}
-                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                      className="absolute inset-0 border border-desert-gold/40 rotate-45"
+                      transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                      className="absolute inset-0 opacity-40"
+                      style={{
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M32 0l4 18 18-4-8 16 16 8-16 8 8 16-18-4-4 18-4-18-18 4 8-16-16-8 16-8-8-16 18 4z' fill='none' stroke='%23C9A961' stroke-width='0.5'/%3E%3C/svg%3E")`,
+                        backgroundSize: 'contain'
+                      }}
                     />
-                    <div className="w-8 h-8 border-2 border-desert-gold/70 rotate-45 flex items-center justify-center">
+                    <div className="w-8 h-8 flex items-center justify-center relative">
                       <motion.div
-                        animate={{ opacity: [0.4, 1, 0.4] }}
+                        animate={{ opacity: [0.4, 1, 0.4], scale: [0.8, 1.1, 0.8] }}
                         transition={{ duration: 4, repeat: Infinity }}
-                        className="w-3 h-3 bg-desert-gold shadow-[0_0_15px_rgba(201,169,97,0.8)]"
+                        className="w-4 h-4 bg-desert-gold shadow-[0_0_20px_rgba(201,169,97,1)] rounded-full"
                       />
+                      <div className="absolute inset-0 border border-desert-gold/60 rotate-45" />
                     </div>
                   </div>
                   <motion.div initial={{ width: 0 }} animate={{ width: 60 }} transition={{ duration: 1.5 }} className="h-px bg-gradient-to-l from-transparent to-desert-gold/50" />
