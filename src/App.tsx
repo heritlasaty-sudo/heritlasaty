@@ -196,143 +196,160 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
         backgroundColor: 'var(--obsidian-midnight)',
       }}
     >
-      {/* Heavenly Ethereal Atmosphere */}
+      {/* Sacred Light & Ethereal Atmosphere */}
       <div
-        className="absolute inset-x-0 top-0 h-[800px] pointer-events-none"
+        className="absolute inset-x-0 top-0 h-[1000px] pointer-events-none opacity-40"
         style={{
-          background: 'radial-gradient(circle at 50% 30%, rgba(201, 169, 97, 0.12) 0%, transparent 60%)',
+          background: 'radial-gradient(circle at 50% 20%, rgba(201, 169, 97, 0.2) 0%, transparent 60%)',
           zIndex: 0
         }}
       />
-      <motion.div
-        animate={{
-          opacity: [0.3, 0.6, 0.3],
-          scale: [1, 1.1, 1]
-        }}
-        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute inset-0 pointer-events-none"
+
+      {/* Background Zellij Pattern */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.03]"
         style={{
-          background: 'radial-gradient(circle at 50% 60%, rgba(201, 169, 97, 0.05) 0%, transparent 70%)',
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0l10 30h30l-25 20 10 30-25-20-25 20 10-30-25-20h30z' fill='none' stroke='%23C9A961' stroke-width='0.5'/%3E%3C/svg%3E")`,
+          backgroundSize: '120px 120px',
           zIndex: 0
         }}
       />
 
       <div className="mb-16 md:mb-28 w-px h-32 md:h-48 bg-gradient-to-b from-transparent via-desert-gold/60 to-transparent relative z-10" />
 
-      <div className="w-full max-w-[760px] px-6 md:px-12 relative z-10">
+      <div className="w-full max-w-[800px] px-6 md:px-12 relative z-10">
         {!submitted ? (
           <div className="relative">
-            {/* The Moroccan Alfiz Frame (Dreamy Halo) */}
+            {/* The Outer Sebka Frame (Grand Moroccan Portal) */}
             <div
-              className="absolute -inset-4 md:-inset-16 border border-desert-gold/20"
+              className="absolute -inset-6 md:-inset-20 border-[0.5px] border-desert-gold/15"
               style={{
-                borderRadius: '2px',
-                boxShadow: '0 0 100px rgba(201, 169, 97, 0.05), inset 0 0 60px rgba(0,0,0,0.8)',
-                background: 'rgba(10, 14, 26, 0.2)',
-                backdropFilter: 'blur(4px)'
+                borderRadius: '8px',
+                background: 'rgba(10, 14, 26, 0.4)',
+                backdropFilter: 'blur(8px)',
+                boxShadow: '0 0 120px rgba(0,0,0,0.8), inset 0 0 80px rgba(201,169,97,0.03)'
               }}
             >
-              {/* Sacred Geometric Pattern Background */}
+              {/* Intricate Sebka (Diamond) Mesh */}
               <div
-                className="absolute inset-0 opacity-[0.05]"
+                className="absolute inset-0 opacity-[0.08]"
                 style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 0L75 45L120 60L75 75L60 120L45 75L0 60L45 45Z' fill='none' stroke='%23C9A961' stroke-width='0.5'/%3E%3C/svg%3E")`,
-                  backgroundSize: '60px 60px'
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='100' viewBox='0 0 60 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0 L60 50 L30 100 L0 50 Z' fill='none' stroke='%23C9A961' stroke-width='1'/%3E%3Cpath d='M0 0 L30 50 L0 100' fill='none' stroke='%23C9A961' stroke-width='0.5'/%3E%3Cpath d='M60 0 L30 50 L60 100' fill='none' stroke='%23C9A961' stroke-width='0.5'/%3E%3C/svg%3E")`,
+                  backgroundSize: '40px 64px'
                 }}
               />
 
-              {/* Corner Arabesque details */}
-              <div className="absolute top-2 left-2 w-12 h-12 border-t border-l border-desert-gold/30 rounded-tl-xl opacity-50" />
-              <div className="absolute top-2 right-2 w-12 h-12 border-t border-r border-desert-gold/30 rounded-tr-xl opacity-50" />
-              <div className="absolute bottom-2 left-2 w-12 h-12 border-b border-l border-desert-gold/30 rounded-bl-xl opacity-50" />
-              <div className="absolute bottom-2 right-2 w-12 h-12 border-b border-r border-desert-gold/30 rounded-br-xl opacity-50" />
+              {/* Ornamental Border Insets */}
+              <div className="absolute inset-2 border border-desert-gold/10 pointer-events-none" />
+
+              {/* Corner Symbols (Andalusian Stars) */}
+              {[...Array(4)].map((_, i) => (
+                <div
+                  key={i}
+                  className={`absolute w-14 h-14 opacity-40 ${i === 0 ? 'top-0 left-0' : i === 1 ? 'top-0 right-0' : i === 2 ? 'bottom-0 left-0' : 'bottom-0 right-0'
+                    }`}
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0l4.5 15.5L40 20l-15.5 4.5L20 40l-4.5-15.5L0 20l15.5-4.5z' fill='none' stroke='%23C9A961' stroke-width='1'/%3E%3C/svg%3E")`,
+                    backgroundSize: 'contain',
+                    backgroundRepeat: 'no-repeat',
+                    transform: i % 2 === 0 ? 'rotate(0deg)' : 'rotate(45deg)'
+                  }}
+                />
+              ))}
             </div>
 
-            {/* The Horseshoe Arch (Heavenly Portal) */}
+            {/* The Golden Arch (Heavenly Passage) */}
             <div
-              className="relative p-10 md:p-28 border border-desert-gold/40 shadow-[0_0_120px_rgba(201,169,97,0.15)] overflow-hidden"
+              className="relative p-12 md:p-32 border-[1.5px] border-desert-gold/40 overflow-hidden"
               style={{
                 borderTopLeftRadius: '50% 100%',
                 borderTopRightRadius: '50% 100%',
-                background: 'radial-gradient(circle at 50% 0%, rgba(201, 169, 97, 0.18) 0%, rgba(10, 14, 26, 0.98) 100%)',
-                backdropFilter: 'blur(12px)',
-                boxShadow: 'inset 0 0 40px rgba(201,169,97,0.1), 0 30px 100px rgba(0,0,0,0.9)',
-                transition: 'all 0.5s ease'
+                background: 'radial-gradient(circle at 50% 0%, rgba(201, 169, 97, 0.25) 0%, rgba(10, 14, 26, 1) 100%)',
+                boxShadow: 'inset 0 0 60px rgba(201,169,97,0.15), 0 40px 100px rgba(0,0,0,1)',
               }}
             >
-              {/* Inner Glowing Decorative Arch */}
+              {/* Inner Sacred Geometry Halo */}
               <div
-                className="absolute inset-3 md:inset-6 border-t border-x border-desert-gold/30 pointer-events-none opacity-40 shadow-[0_0_20px_rgba(201,169,97,0.1)]"
+                className="absolute inset-4 md:inset-8 border-t border-x border-desert-gold/20 pointer-events-none opacity-60"
                 style={{
                   borderTopLeftRadius: '50% 100%',
                   borderTopRightRadius: '50% 100%',
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%23C9A961' stroke-width='0.2' stroke-dasharray='1,4'/%3E%3C/svg%3E")`,
                 }}
               />
 
               <div className="text-center mb-16 md:mb-24 relative">
-                <div className="flex justify-center items-center gap-6 mb-12">
-                  <motion.div animate={{ opacity: [0.2, 0.8, 0.2] }} transition={{ duration: 4, repeat: Infinity }} className="h-px w-20 bg-gradient-to-r from-transparent to-desert-gold/80" />
-                  <div className="relative">
-                    <div className="w-12 h-12 rotate-45 border border-desert-gold/50 flex items-center justify-center">
+                {/* Ritual Symbol */}
+                <div className="flex justify-center items-center gap-8 mb-14">
+                  <motion.div initial={{ width: 0 }} animate={{ width: 60 }} transition={{ duration: 1.5 }} className="h-px bg-gradient-to-r from-transparent to-desert-gold/50" />
+                  <div className="w-14 h-14 relative flex items-center justify-center">
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                      className="absolute inset-0 border border-desert-gold/40 rotate-45"
+                    />
+                    <div className="w-8 h-8 border-2 border-desert-gold/70 rotate-45 flex items-center justify-center">
                       <motion.div
-                        animate={{ scale: [0.8, 1.2, 0.8], opacity: [0.4, 1, 0.4] }}
-                        transition={{ duration: 6, repeat: Infinity }}
-                        className="w-5 h-5 bg-desert-gold/30 shadow-[0_0_25px_rgba(201,169,97,0.6)]"
+                        animate={{ opacity: [0.4, 1, 0.4] }}
+                        transition={{ duration: 4, repeat: Infinity }}
+                        className="w-3 h-3 bg-desert-gold shadow-[0_0_15px_rgba(201,169,97,0.8)]"
                       />
                     </div>
                   </div>
-                  <motion.div animate={{ opacity: [0.2, 0.8, 0.2] }} transition={{ duration: 4, repeat: Infinity }} className="h-px w-20 bg-gradient-to-l from-transparent to-desert-gold/80" />
+                  <motion.div initial={{ width: 0 }} animate={{ width: 60 }} transition={{ duration: 1.5 }} className="h-px bg-gradient-to-l from-transparent to-desert-gold/50" />
                 </div>
 
                 <h2
                   className="mb-8"
                   style={{
-                    fontSize: 'clamp(36px, 10vw, 58px)',
+                    fontSize: 'clamp(38px, 12vw, 64px)',
                     fontWeight: 400,
                     color: 'var(--cream-primary)',
-                    letterSpacing: '8px',
+                    letterSpacing: '10px',
                     fontFamily: "'Bodoni Moda', serif",
                     fontStyle: 'italic',
-                    textShadow: '0 0 30px rgba(201, 169, 97, 0.4)'
+                    textShadow: '0 0 40px rgba(201, 169, 97, 0.3)'
                   }}
                 >
                   The Gate
                 </h2>
 
-                <div className="w-20 h-px bg-gradient-to-r from-transparent via-desert-gold/50 to-transparent mx-auto mb-10" />
+                <div className="flex items-center justify-center gap-4 mb-10">
+                  <div className="w-12 h-px bg-gradient-to-r from-transparent to-desert-gold/40" />
+                  <div className="text-desert-gold text-[10px] tracking-[5px] uppercase opacity-60">Established 1000 AD</div>
+                  <div className="w-12 h-px bg-gradient-to-l from-transparent to-desert-gold/40" />
+                </div>
 
                 <p
-                  className="mx-auto max-w-[480px]"
+                  className="mx-auto max-w-[500px]"
                   style={{
                     fontSize: 'clamp(14px, 3.5vw, 16px)',
-                    lineHeight: '2.2',
+                    lineHeight: '2.4',
                     color: 'var(--text-secondary)',
                     letterSpacing: '2.5px',
                     fontFamily: "'Outfit', sans-serif",
-                    fontWeight: 300,
-                    opacity: 0.9
+                    fontWeight: 300
                   }}
                 >
-                  HERIT LASATY is a selective archive. We seek those whose vision transcends the ordinary.
+                  Entrance is granted through alignment. Those who value the rare, the slow, and the sacred are invited to request passage.
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-14 md:space-y-20 relative z-10">
-                <div className="space-y-12">
+              <form onSubmit={handleSubmit} className="space-y-16 md:space-y-24 relative z-10">
+                <div className="space-y-14">
                   <div className="relative group/field">
                     <input
                       type="text"
                       name="name"
-                      placeholder="YOUR NAME"
+                      placeholder="YOUR LEGEACY NAME"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       required
-                      className="w-full bg-transparent pb-4 outline-none border-b border-moonlit-steel focus:border-desert-gold transition-all text-center tracking-[4px] placeholder:opacity-40"
+                      className="w-full bg-transparent pb-5 outline-none border-b border-desert-gold/20 focus:border-desert-gold transition-all text-center tracking-[6px] placeholder:opacity-30"
                       style={{
                         color: 'var(--text-primary)',
-                        fontSize: '13px',
-                        textTransform: 'uppercase',
-                        fontFamily: 'inherit'
+                        fontSize: '12px',
+                        textTransform: 'uppercase'
                       }}
                     />
                   </div>
@@ -340,70 +357,70 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
                     <input
                       type="email"
                       name="email"
-                      placeholder="YOUR EMAIL"
+                      placeholder="VIRTUAL ADDRESS (EMAIL)"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
-                      className="w-full bg-transparent pb-4 outline-none border-b border-moonlit-steel focus:border-desert-gold transition-all text-center tracking-[4px] placeholder:opacity-40"
+                      className="w-full bg-transparent pb-5 outline-none border-b border-desert-gold/20 focus:border-desert-gold transition-all text-center tracking-[6px] placeholder:opacity-30"
                       style={{
                         color: 'var(--text-primary)',
-                        fontSize: '13px',
-                        textTransform: 'uppercase',
-                        fontFamily: 'inherit'
+                        fontSize: '12px',
+                        textTransform: 'uppercase'
                       }}
                     />
                   </div>
                   <div className="relative group/field">
                     <textarea
                       name="reason"
-                      placeholder="WHY DO YOU SEEK ADMISSION?"
+                      placeholder="DESCRIBE YOUR RESONANCE WITH HERIT"
                       value={reason}
                       onChange={(e) => setReason(e.target.value)}
                       required
                       rows={2}
-                      className="w-full bg-transparent pb-4 outline-none border-b border-moonlit-steel focus:border-desert-gold transition-all text-center tracking-[4px] placeholder:opacity-40 resize-none overflow-hidden"
+                      className="w-full bg-transparent pb-5 outline-none border-b border-desert-gold/20 focus:border-desert-gold transition-all text-center tracking-[5px] placeholder:opacity-30 resize-none overflow-hidden"
                       style={{
                         color: 'var(--text-primary)',
-                        fontSize: '13px',
+                        fontSize: '12px',
                         textTransform: 'uppercase',
-                        fontFamily: 'inherit',
-                        lineHeight: '2'
+                        lineHeight: '2.2'
                       }}
                     />
                   </div>
                 </div>
 
-                <div className="pt-10">
+                <div className="pt-12">
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full py-6 md:py-7 border border-desert-gold/60 text-text-primary bg-transparent relative overflow-hidden group shadow-[0_0_40px_rgba(201,169,97,0.1)]"
+                    className="w-full py-6 md:py-8 border border-desert-gold/50 text-text-primary bg-transparent relative overflow-hidden group shadow-[0_0_50px_rgba(201,169,97,0.1)]"
                     style={{
-                      fontSize: '14px',
-                      letterSpacing: '8px',
+                      fontSize: '13px',
+                      letterSpacing: '10px',
                       fontWeight: 300,
                       textTransform: 'uppercase',
-                      transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
+                      transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1)'
                     }}
                     onMouseEnter={(e) => {
                       if (!loading && !window.matchMedia("(pointer: coarse)").matches) {
-                        e.currentTarget.style.backgroundColor = 'rgba(201, 169, 97, 1)';
+                        e.currentTarget.style.backgroundColor = 'var(--desert-gold)';
                         e.currentTarget.style.color = 'var(--obsidian-midnight)';
-                        e.currentTarget.style.boxShadow = '0 0 60px rgba(201, 169, 97, 0.4)';
+                        e.currentTarget.style.boxShadow = '0 0 80px rgba(201, 169, 97, 0.5)';
                       }
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.backgroundColor = 'transparent';
                       e.currentTarget.style.color = 'var(--text-primary)';
-                      e.currentTarget.style.boxShadow = '0 0 40px rgba(201, 169, 97, 0.1)';
+                      e.currentTarget.style.boxShadow = '0 0 50px rgba(201, 169, 97, 0.1)';
                     }}
                   >
-                    <span className="relative z-10">{loading ? 'TRANSMITTING...' : 'REQUEST ADMISSION'}</span>
-                    <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <span className="relative z-10">{loading ? 'TRANSMITTING...' : 'INITIATE REQUEST'}</span>
+                    <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                   </button>
-                  <p className="text-center mt-10 text-[11px] text-desert-gold/60 tracking-[3px] uppercase italic">
-                    Traditional craft takes time. Expect a response briefly.
-                  </p>
+                  <div className="flex justify-center items-center gap-4 mt-12 opacity-40">
+                    <div className="h-px w-8 bg-desert-gold/50" />
+                    <span className="text-[9px] tracking-[4px] text-desert-gold uppercase">Traditional Craft • Modern Soul</span>
+                    <div className="h-px w-8 bg-desert-gold/50" />
+                  </div>
                 </div>
               </form>
             </div>
@@ -433,6 +450,7 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
           </motion.div>
         )}
       </div>
+
 
       <div className="text-center mt-32 mb-16 text-[14px] text-desert-gold tracking-[2px] opacity-70 relative z-10 w-full hover:opacity-100 transition-opacity">
         <a href="mailto:herit@heritlasaty.com" className="hover:tracking-[3px] transition-all duration-500">herit@heritlasaty.com</a>
