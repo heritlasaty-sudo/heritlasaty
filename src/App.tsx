@@ -285,41 +285,6 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
                   </div>
                   <motion.div initial={{ width: 0 }} animate={{ width: 60 }} transition={{ duration: 1.5 }} className="h-px bg-gradient-to-l from-transparent to-desert-gold/50" />
                 </div>
-
-                <h2
-                  className="mb-8"
-                  style={{
-                    fontSize: 'clamp(38px, 12vw, 64px)',
-                    fontWeight: 400,
-                    color: 'var(--cream-primary)',
-                    letterSpacing: '10px',
-                    fontFamily: "'Bodoni Moda', serif",
-                    fontStyle: 'italic',
-                    textShadow: '0 0 40px rgba(201, 169, 97, 0.3)'
-                  }}
-                >
-                  The Gate
-                </h2>
-
-                <div className="flex items-center justify-center gap-4 mb-10">
-                  <div className="w-12 h-px bg-gradient-to-r from-transparent to-desert-gold/40" />
-                  <div className="text-desert-gold text-[10px] tracking-[5px] uppercase opacity-60">Established 1000 AD</div>
-                  <div className="w-12 h-px bg-gradient-to-l from-transparent to-desert-gold/40" />
-                </div>
-
-                <p
-                  className="mx-auto max-w-[500px]"
-                  style={{
-                    fontSize: 'clamp(14px, 3.5vw, 16px)',
-                    lineHeight: '2.4',
-                    color: 'var(--text-secondary)',
-                    letterSpacing: '2.5px',
-                    fontFamily: "'Outfit', sans-serif",
-                    fontWeight: 300
-                  }}
-                >
-                  Entrance is granted through alignment. Those who value the rare, the slow, and the sacred are invited to request passage.
-                </p>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-16 md:space-y-24 relative z-10">
@@ -403,11 +368,6 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
                     <span className="relative z-10">{loading ? 'TRANSMITTING...' : 'INITIATE REQUEST'}</span>
                     <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                   </button>
-                  <div className="flex justify-center items-center gap-4 mt-12 opacity-40">
-                    <div className="h-px w-8 bg-desert-gold/50" />
-                    <span className="text-[9px] tracking-[4px] text-desert-gold uppercase">Traditional Craft • Modern Soul</span>
-                    <div className="h-px w-8 bg-desert-gold/50" />
-                  </div>
                 </div>
               </form>
             </div>
