@@ -1,5 +1,5 @@
-import { useState, useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 // EmailJS removed
 // Supabase import removed
 
@@ -152,35 +152,6 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const containerRef = useRef<HTMLDivElement>(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const mouseXSpring = useSpring(x, { stiffness: 150, damping: 30 });
-  const mouseYSpring = useSpring(y, { stiffness: 150, damping: 30 });
-
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["5deg", "-5deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-5deg", "5deg"]);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (window.matchMedia("(pointer: coarse)").matches) return;
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-    const xPct = (mouseX / width) - 0.5;
-    const yPct = (mouseY / height) - 0.5;
-    x.set(xPct);
-    y.set(yPct);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -199,19 +170,19 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
       });
 
       if (response.ok) {
+        // Precise timing for premium feel
         onShowNotification();
         setTimeout(() => {
           setSubmitted(true);
           setName('');
           setEmail('');
           setReason('');
-        }, 300);
+        }, 150); // Faster transition for seamless feel
       } else {
         throw new Error('Netlify submission failed');
       }
     } catch (err) {
       console.error('Transmission fault:', err);
-      // Still show success UI to user for premium feel
       onShowNotification();
       setSubmitted(true);
     } finally {
@@ -221,144 +192,109 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
 
   return (
     <section
-      className="w-full flex flex-col items-center justify-center pt-32 md:pt-60 pb-10 overflow-hidden relative"
+      className="w-full flex flex-col items-center justify-center pt-24 md:pt-48 pb-0 overflow-hidden relative"
       style={{
         backgroundColor: 'var(--obsidian-midnight)',
-        perspective: '1400px'
       }}
     >
-      <motion.div
-        animate={{
-          opacity: [0.1, 0.2, 0.1],
-          scale: [1, 1.05, 1]
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute w-[800px] md:w-[1400px] h-[800px] md:h-[1400px] rounded-full pointer-events-none"
+      {/* Heritage Glow Background */}
+      <div
+        className="absolute inset-0 pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(201, 169, 97, 0.1) 0%, transparent 70%)',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
+          background: 'radial-gradient(circle at 50% 50%, rgba(201, 169, 97, 0.08) 0%, transparent 70%)',
           zIndex: 0
         }}
       />
 
-      <div className="mb-12 md:mb-24 w-px h-24 md:h-40 bg-gradient-to-b from-transparent via-desert-gold/40 to-transparent relative z-10" />
+      <div className="mb-12 md:mb-20 w-px h-24 md:h-32 bg-gradient-to-b from-transparent via-desert-gold/50 to-transparent relative z-10" />
 
-      <motion.div
-        ref={containerRef}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        style={{
-          rotateX,
-          rotateY,
-          transformStyle: "preserve-3d",
-          margin: '0 auto',
-          willChange: 'transform'
-        }}
-        className="w-full max-w-[720px] px-5 md:px-10 relative pointer-events-auto"
-      >
+      <div className="w-full max-w-[760px] px-6 md:px-10 relative z-10">
         {!submitted ? (
-          <div className="relative group">
-            {/* The Alfiz Rectangular Frame */}
+          <div className="relative">
+            {/* The Moroccan Outer Frame (Golden Glow) */}
             <div
-              className="absolute -inset-6 md:-inset-16 border-2 border-desert-gold/20 pointer-events-none"
+              className="absolute -inset-4 md:-inset-12 border border-desert-gold/30"
               style={{
-                borderRadius: '2px',
-                background: 'linear-gradient(135deg, rgba(201, 169, 97, 0.08) 0%, transparent 50%, rgba(201, 169, 97, 0.08) 100%)',
-                boxShadow: '0 40px 100px rgba(0,0,0,0.8), inset 0 0 80px rgba(201,169,97,0.05)',
-                transform: 'translateZ(-40px)'
+                borderRadius: '4px',
+                boxShadow: '0 0 40px rgba(201, 169, 97, 0.1)',
+                background: 'rgba(10, 14, 26, 0.4)'
               }}
             >
-              {/* Spandrel Patterns */}
+              {/* Corner Accents */}
+              <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-desert-gold/60" />
+              <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-desert-gold/60" />
+              <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-desert-gold/60" />
+              <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-desert-gold/60" />
+
+              {/* Patterned Spandrels */}
               <div
-                className="absolute top-0 left-0 w-32 md:w-64 h-32 md:h-64 opacity-[0.15]"
+                className="absolute inset-0 opacity-[0.07]"
                 style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l30 30-30 30L0 30z' fill='none' stroke='%23C9A961' stroke-width='0.5'/%3E%3Cpath d='M30 15l15 15-15 15-15-15z' fill='none' stroke='%23C9A961' stroke-width='0.25'/%3E%3C/svg%3E")`,
-                  backgroundSize: '30px 30px',
-                  maskImage: 'radial-gradient(circle at top left, black, transparent 85%)',
-                  WebkitMaskImage: 'radial-gradient(circle at top left, black, transparent 85%)',
-                }}
-              />
-              <div
-                className="absolute top-0 right-0 w-32 md:w-64 h-32 md:h-64 opacity-[0.15]"
-                style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l30 30-30 30L0 30z' fill='none' stroke='%23C9A961' stroke-width='0.5'/%3E%3Cpath d='M30 15l15 15-15 15-15-15z' fill='none' stroke='%23C9A961' stroke-width='0.25'/%3E%3C/svg%3E")`,
-                  backgroundSize: '30px 30px',
-                  maskImage: 'radial-gradient(circle at top right, black, transparent 85%)',
-                  WebkitMaskImage: 'radial-gradient(circle at top right, black, transparent 85%)',
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0 L100 50 L50 100 L0 50 Z' fill='none' stroke='%23C9A961' stroke-width='1'/%3E%3C/svg%3E")`,
+                  backgroundSize: '40px 40px'
                 }}
               />
             </div>
 
             {/* The Horseshoe Arch Container */}
             <div
-              className="relative p-10 md:p-24 border-2 border-desert-gold/40 shadow-[0_-20px_80px_rgba(201,169,97,0.2)] overflow-hidden"
+              className="relative p-10 md:p-24 border-2 border-desert-gold/60 shadow-[0_0_100px_rgba(0,0,0,0.9)] overflow-hidden"
               style={{
                 borderTopLeftRadius: '50% 100%',
                 borderTopRightRadius: '50% 100%',
-                background: 'radial-gradient(circle at 50% 0%, rgba(201, 169, 97, 0.15) 0%, rgba(10, 14, 26, 0.95) 100%)',
-                boxShadow: 'inset 0 4px 40px rgba(255,255,255,0.05), 0 -20px 100px rgba(0,0,0,1)',
-                transform: 'translateZ(20px)'
+                background: 'linear-gradient(180deg, rgba(201, 169, 97, 0.18) 0%, rgba(10, 14, 26, 1) 100%)',
+                boxShadow: 'inset 0 0 50px rgba(201, 169, 97, 0.1), 0 0 100px rgba(0,0,0,1)',
               }}
             >
-              {/* Dynamic Light Reflection Layer */}
+              {/* Internal Decorative Arch Line */}
               <div
-                className="absolute inset-0 opacity-10 pointer-events-none"
+                className="absolute inset-2 md:inset-4 border border-desert-gold/20 pointer-events-none"
                 style={{
-                  background: 'linear-gradient(135deg, transparent 45%, rgba(255,255,255,0.1) 50%, transparent 55%)',
-                  backgroundSize: '200% 200%',
-                  animation: 'shimmer 12s infinite linear'
+                  borderTopLeftRadius: '50% 100%',
+                  borderTopRightRadius: '50% 100%',
                 }}
               />
 
-              <div className="text-center mb-12 md:mb-20 relative z-10" style={{ transform: "translateZ(50px)" }}>
-                <div className="flex justify-center items-center gap-5 md:gap-8 mb-10 md:mb-16">
-                  <motion.div animate={{ height: [0, 64, 0] }} transition={{ duration: 4, repeat: Infinity }} className="w-px bg-gradient-to-t from-desert-gold/80 to-transparent" />
-                  <div className="relative">
-                    <div className="w-10 h-10 md:w-12 md:h-12 rotate-45 border border-desert-gold/60 flex items-center justify-center">
-                      <motion.div
-                        animate={{ opacity: [0.3, 1, 0.3], scale: [0.8, 1.1, 0.8] }}
-                        transition={{ duration: 5, repeat: Infinity }}
-                        className="w-6 h-6 rotate-45 bg-desert-gold/20 border border-desert-gold/80"
-                      />
-                    </div>
+              <div className="text-center mb-16 relative">
+                <div className="flex justify-center items-center gap-6 mb-12">
+                  <div className="w-10 h-10 rotate-45 border-2 border-desert-gold/60 flex items-center justify-center">
+                    <div className="w-4 h-4 rotate-45 bg-desert-gold/40 shadow-[0_0_15px_rgba(201,169,97,0.5)]" />
                   </div>
-                  <motion.div animate={{ height: [0, 64, 0] }} transition={{ duration: 4, repeat: Infinity }} className="w-px bg-gradient-to-t from-desert-gold/80 to-transparent" />
                 </div>
 
                 <h2
-                  className="mb-6 md:mb-8"
+                  className="mb-8"
                   style={{
-                    fontSize: 'clamp(32px, 8vw, 56px)',
+                    fontSize: 'clamp(32px, 8vw, 52px)',
                     fontWeight: 400,
                     color: 'var(--cream-primary)',
-                    letterSpacing: '5px',
+                    letterSpacing: '6px',
                     fontFamily: "'Bodoni Moda', serif",
                     fontStyle: 'italic',
-                    textShadow: '0 5px 15px rgba(0,0,0,0.8)'
+                    textShadow: '0 4px 10px rgba(0,0,0,0.5)'
                   }}
                 >
                   The Gate
                 </h2>
-                <div className="w-16 h-px bg-desert-gold/50 mx-auto mb-8 md:mb-10" />
+
+                <div className="w-16 h-px bg-desert-gold/40 mx-auto mb-10" />
+
                 <p
-                  className="mx-auto max-w-[480px]"
+                  className="mx-auto max-w-[440px]"
                   style={{
-                    fontSize: 'clamp(14px, 3.5vw, 16px)',
-                    lineHeight: '1.8',
+                    fontSize: 'clamp(14px, 3.5vw, 15px)',
+                    lineHeight: '2',
                     color: 'var(--text-secondary)',
-                    letterSpacing: '1.5px',
-                    fontFamily: "'Outfit', sans-serif",
-                    padding: '0 10px'
+                    letterSpacing: '2px',
+                    fontFamily: "'Outfit', sans-serif"
                   }}
                 >
-                  HERIT LASATY is reserved for those who seek depth over surface. Request consideration.
+                  HERIT LASATY is reserved for those who understand its value. Request consideration.
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-12 md:space-y-20 relative z-10">
-                <div className="relative group/input">
+              <form onSubmit={handleSubmit} className="space-y-12 relative z-10 h-full">
+                <div className="space-y-10">
                   <input
                     type="text"
                     name="name"
@@ -366,20 +302,14 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
-                    autoComplete="name"
-                    className="w-full bg-transparent pb-4 outline-none transition-all placeholder:text-moonlit-steel border-b border-moonlit-steel focus:border-desert-gold"
+                    className="w-full bg-transparent pb-4 outline-none border-b border-moonlit-steel focus:border-desert-gold transition-colors text-center"
                     style={{
                       color: 'var(--text-primary)',
                       fontSize: '13px',
-                      fontFamily: 'inherit',
                       letterSpacing: '4px',
-                      textTransform: 'uppercase',
-                      textAlign: 'center'
+                      textTransform: 'uppercase'
                     }}
                   />
-                </div>
-
-                <div className="relative group/input">
                   <input
                     type="email"
                     name="email"
@@ -387,20 +317,14 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    autoComplete="email"
-                    className="w-full bg-transparent pb-4 outline-none transition-all placeholder:text-moonlit-steel border-b border-moonlit-steel focus:border-desert-gold"
+                    className="w-full bg-transparent pb-4 outline-none border-b border-moonlit-steel focus:border-desert-gold transition-colors text-center"
                     style={{
                       color: 'var(--text-primary)',
                       fontSize: '13px',
-                      fontFamily: 'inherit',
                       letterSpacing: '4px',
-                      textTransform: 'uppercase',
-                      textAlign: 'center'
+                      textTransform: 'uppercase'
                     }}
                   />
-                </div>
-
-                <div className="relative group/input">
                   <textarea
                     name="reason"
                     placeholder="WHY DO YOU SEEK HERIT LASATY?"
@@ -408,81 +332,64 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
                     onChange={(e) => setReason(e.target.value)}
                     required
                     rows={2}
-                    className="w-full bg-transparent pb-4 outline-none transition-all placeholder:text-moonlit-steel border-b border-moonlit-steel focus:border-desert-gold resize-none"
+                    className="w-full bg-transparent pb-4 outline-none border-b border-moonlit-steel focus:border-desert-gold transition-colors text-center resize-none"
                     style={{
                       color: 'var(--text-primary)',
                       fontSize: '13px',
-                      fontFamily: 'inherit',
                       letterSpacing: '4px',
                       textTransform: 'uppercase',
-                      textAlign: 'center',
-                      lineHeight: '2'
+                      lineHeight: '1.8'
                     }}
                   />
                 </div>
 
-                <div className="pt-6 md:pt-10">
+                <div className="pt-8">
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full py-5 md:py-6 transition-all duration-700 hover:shadow-[0_0_50px_rgba(201,169,97,0.3)] relative overflow-hidden group"
+                    className="w-full py-5 border border-desert-gold text-text-primary bg-transparent transition-all duration-500 hover:bg-desert-gold hover:text-obsidian-midnight active:scale-[0.98]"
                     style={{
-                      border: '1px solid var(--desert-gold)',
-                      color: 'var(--text-primary)',
-                      backgroundColor: 'transparent',
                       fontSize: '14px',
-                      fontFamily: 'inherit',
                       letterSpacing: '6px',
                       fontWeight: 300,
-                      cursor: loading ? 'not-allowed' : 'pointer',
-                      opacity: loading ? 0.6 : 1,
                       textTransform: 'uppercase'
                     }}
-                    onMouseEnter={(e) => {
-                      if (!loading && !window.matchMedia("(pointer: coarse)").matches) {
-                        e.currentTarget.style.backgroundColor = 'var(--desert-gold)';
-                        e.currentTarget.style.color = 'var(--obsidian-midnight)';
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = 'transparent';
-                      e.currentTarget.style.color = 'var(--text-primary)';
-                    }}
                   >
-                    <span className="relative z-10">{loading ? 'TRANSMITTING...' : 'SUBMIT REQUEST'}</span>
+                    {loading ? 'TRANSMITTING...' : 'SUBMIT REQUEST'}
                   </button>
-                  <p className="text-center mt-10 md:mt-12 text-[10px] md:text-[11px] text-desert-gold tracking-[2px] opacity-70 uppercase">
-                    Refinement takes time. We will respond within 48 hours.
+                  <p className="text-center mt-8 text-[11px] text-desert-gold/80 tracking-[2px] uppercase">
+                    Refinement within 48 hours.
                   </p>
                 </div>
               </form>
             </div>
           </div>
         ) : (
-          <div className="text-center py-24 md:py-32 px-6">
-            <div className="w-16 h-16 md:w-20 md:h-20 rotate-45 border border-desert-gold/40 flex items-center justify-center mx-auto mb-12">
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                className="w-8 h-8 md:w-10 md:h-10 rotate-45 bg-desert-gold/30"
-              />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="text-center py-32 px-6"
+          >
+            <div className="w-16 h-16 rotate-45 border-2 border-desert-gold/60 mx-auto mb-12 flex items-center justify-center">
+              <div className="w-6 h-6 bg-desert-gold/40 shadow-[0_0_20px_rgba(201,169,97,0.5)]" />
             </div>
-            <h3 style={{ fontSize: '24px', fontWeight: 300, color: 'var(--cream-primary)', letterSpacing: '6px', lineHeight: 1.6, textTransform: 'uppercase', fontFamily: "'Outfit', sans-serif" }}>
-              Alignment Sought.
+            <h3 style={{ fontSize: '24px', fontWeight: 300, color: 'var(--cream-primary)', letterSpacing: '6px', textTransform: 'uppercase', fontFamily: "'Outfit', sans-serif" }}>
+              Request Received.
             </h3>
-            <p style={{ fontSize: '14px', color: 'var(--desert-gold)', marginTop: '32px', letterSpacing: '2px', opacity: 0.8, textTransform: 'uppercase' }}>
+            <p style={{ fontSize: '14px', color: 'var(--desert-gold)', marginTop: '24px', letterSpacing: '1px', opacity: 0.8 }}>
               We will contact you shortly if our souls resonate.
             </p>
-          </div>
+          </motion.div>
         )}
-      </motion.div>
+      </div>
 
-      <div className="text-center mt-20 md:mt-32 mb-10 text-[13px] md:text-[14px] text-desert-gold tracking-[1px] relative z-10">
+      <div className="text-center mt-24 mb-16 text-[14px] text-desert-gold tracking-[1.5px] relative z-10 w-full">
         herit@heritlasaty.com
       </div>
     </section>
   );
 }
+
 
 function App() {
   const [showToast, setShowToast] = useState(false);
