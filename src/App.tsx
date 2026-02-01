@@ -220,156 +220,276 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
       <div className="w-full max-w-[800px] px-6 md:px-12 relative z-10">
         {!submitted ? (
           <div className="relative">
-            {/* The Outer Sebka Frame (Grand Moroccan Portal) */}
-            <div
-              className="absolute -inset-6 md:-inset-20 border-[0.5px] border-desert-gold/15"
-              style={{
-                borderRadius: '8px',
-                background: 'rgba(10, 14, 26, 0.4)',
-                backdropFilter: 'blur(8px)',
-                boxShadow: '0 0 120px rgba(0,0,0,0.8), inset 0 0 80px rgba(201,169,97,0.03)'
-              }}
-            >
-              {/* Intricate Sebka (Diamond) Mesh */}
-              <div
-                className="absolute inset-0 opacity-[0.08]"
+            {/* 
+              ARCHITECTURAL GATE COMMENTED OUT PER REQUEST
+              {/* The Outer Sebka Frame (Grand Moroccan Portal) */}
+            {/*
+              <div 
+                className="absolute -inset-6 md:-inset-20 border-[0.5px] border-desert-gold/15"
                 style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='100' viewBox='0 0 60 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0 L60 50 L30 100 L0 50 Z' fill='none' stroke='%23C9A961' stroke-width='1'/%3E%3Cpath d='M0 0 L30 50 L0 100' fill='none' stroke='%23C9A961' stroke-width='0.5'/%3E%3Cpath d='M60 0 L30 50 L60 100' fill='none' stroke='%23C9A961' stroke-width='0.5'/%3E%3C/svg%3E")`,
-                  backgroundSize: '40px 64px'
+                  borderRadius: '8px',
+                  background: 'rgba(10, 14, 26, 0.4)',
+                  backdropFilter: 'blur(8px)',
+                  boxShadow: '0 0 120px rgba(0,0,0,0.8), inset 0 0 80px rgba(201,169,97,0.03)'
                 }}
-              />
+              >
+                {/* Intricate Sebka (Diamond) Mesh */}
+            {/*
+                <div
+                  className="absolute inset-0 opacity-[0.08]"
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='100' viewBox='0 0 60 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0 L60 50 L30 100 L0 50 Z' fill='none' stroke='%23C9A961' stroke-width='1'/%3E%3Cpath d='M0 0 L30 50 L0 100' fill='none' stroke='%23C9A961' stroke-width='0.5'/%3E%3Cpath d='M60 0 L30 50 L60 100' fill='none' stroke='%23C9A961' stroke-width='0.5'/%3E%3C/svg%3E")`,
+                    backgroundSize: '40px 64px'
+                  }}
+                />
 
-              {/* Ornamental Border Insets */}
-              <div className="absolute inset-2 border border-desert-gold/10 pointer-events-none" />
+                {/* Ornamental Border Insets */}
+            {/*
+                <div className="absolute inset-2 border border-desert-gold/10 pointer-events-none" />
 
 
-            </div>
+              </div>
+            */}
 
             {/* The Golden Arch (Heavenly Passage) */}
-            <div
-              className="relative p-12 md:p-32 border-[1.5px] border-desert-gold/40 overflow-hidden"
-              style={{
-                borderTopLeftRadius: '50% 100%',
-                borderTopRightRadius: '50% 100%',
-                background: 'radial-gradient(circle at 50% 0%, rgba(201, 169, 97, 0.25) 0%, rgba(10, 14, 26, 1) 100%)',
-                boxShadow: 'inset 0 0 60px rgba(201,169,97,0.15), 0 40px 100px rgba(0,0,0,1)',
-              }}
-            >
-              {/* Inner Sacred Geometry Halo */}
+            {/*
               <div
-                className="absolute inset-4 md:inset-8 border-t border-x border-desert-gold/20 pointer-events-none opacity-60"
+                className="relative p-12 md:p-32 border-[1.5px] border-desert-gold/40 overflow-hidden"
                 style={{
                   borderTopLeftRadius: '50% 100%',
                   borderTopRightRadius: '50% 100%',
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%23C9A961' stroke-width='0.2' stroke-dasharray='1,4'/%3E%3C/svg%3E")`,
+                  background: 'radial-gradient(circle at 50% 0%, rgba(201, 169, 97, 0.25) 0%, rgba(10, 14, 26, 1) 100%)',
+                  boxShadow: 'inset 0 0 60px rgba(201,169,97,0.15), 0 40px 100px rgba(0,0,0,1)',
                 }}
-              />
+              >
+                {/* Inner Sacred Geometry Halo */}
+            {/*
+                <div
+                  className="absolute inset-4 md:inset-8 border-t border-x border-desert-gold/20 pointer-events-none opacity-60"
+                  style={{
+                    borderTopLeftRadius: '50% 100%',
+                    borderTopRightRadius: '50% 100%',
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%23C9A961' stroke-width='0.2' stroke-dasharray='1,4'/%3E%3C/svg%3E")`,
+                  }}
+                />
 
-              <div className="text-center mb-16 md:mb-24 relative">
-                {/* Ritual Symbol */}
-                <div className="flex justify-center items-center gap-8 mb-14">
-                  <motion.div initial={{ width: 0 }} animate={{ width: 60 }} transition={{ duration: 1.5 }} className="h-px bg-gradient-to-r from-transparent to-desert-gold/50" />
-                  <div className="w-14 h-14 relative flex items-center justify-center">
-                    <motion.div
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                      className="absolute inset-0 border border-desert-gold/40 rotate-45"
-                    />
-                    <div className="w-8 h-8 border-2 border-desert-gold/70 rotate-45 flex items-center justify-center">
+                <div className="text-center mb-16 md:mb-24 relative">
+                  {/* Ritual Symbol */}
+            {/*
+                  <div className="flex justify-center items-center gap-8 mb-14">
+                    <motion.div initial={{ width: 0 }} animate={{ width: 60 }} transition={{ duration: 1.5 }} className="h-px bg-gradient-to-r from-transparent to-desert-gold/50" />
+                    <div className="w-14 h-14 relative flex items-center justify-center">
                       <motion.div
-                        animate={{ opacity: [0.4, 1, 0.4] }}
-                        transition={{ duration: 4, repeat: Infinity }}
-                        className="w-3 h-3 bg-desert-gold shadow-[0_0_15px_rgba(201,169,97,0.8)]"
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                        className="absolute inset-0 border border-desert-gold/40 rotate-45"
+                      />
+                      <div className="w-8 h-8 border-2 border-desert-gold/70 rotate-45 flex items-center justify-center">
+                        <motion.div
+                          animate={{ opacity: [0.4, 1, 0.4] }}
+                          transition={{ duration: 4, repeat: Infinity }}
+                          className="w-3 h-3 bg-desert-gold shadow-[0_0_15px_rgba(201,169,97,0.8)]"
+                        />
+                      </div>
+                    </div>
+                    <motion.div initial={{ width: 0 }} animate={{ width: 60 }} transition={{ duration: 1.5 }} className="h-px bg-gradient-to-l from-transparent to-desert-gold/50" />
+                  </div>
+                </div>
+
+                <form onSubmit={handleSubmit} className="space-y-16 md:space-y-24 relative z-10">
+                  <div className="space-y-14">
+                    <div className="relative group/field">
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="YOUR LEGEACY NAME"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                        className="w-full bg-transparent pb-5 outline-none border-b border-desert-gold/20 focus:border-desert-gold transition-all text-center tracking-[6px] placeholder:opacity-30"
+                        style={{
+                          color: 'var(--text-primary)',
+                          fontSize: '12px',
+                          textTransform: 'uppercase'
+                        }}
+                      />
+                    </div>
+                    <div className="relative group/field">
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="VIRTUAL ADDRESS (EMAIL)"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                        className="w-full bg-transparent pb-5 outline-none border-b border-desert-gold/20 focus:border-desert-gold transition-all text-center tracking-[6px] placeholder:opacity-30"
+                        style={{
+                          color: 'var(--text-primary)',
+                          fontSize: '12px',
+                          textTransform: 'uppercase'
+                        }}
+                      />
+                    </div>
+                    <div className="relative group/field">
+                      <textarea
+                        name="reason"
+                        placeholder="DESCRIBE YOUR RESONANCE WITH HERIT"
+                        value={reason}
+                        onChange={(e) => setReason(e.target.value)}
+                        required
+                        rows={2}
+                        className="w-full bg-transparent pb-5 outline-none border-b border-desert-gold/20 focus:border-desert-gold transition-all text-center tracking-[5px] placeholder:opacity-30 resize-none overflow-hidden"
+                        style={{
+                          color: 'var(--text-primary)',
+                          fontSize: '12px',
+                          textTransform: 'uppercase',
+                          lineHeight: '2.2'
+                        }}
                       />
                     </div>
                   </div>
-                  <motion.div initial={{ width: 0 }} animate={{ width: 60 }} transition={{ duration: 1.5 }} className="h-px bg-gradient-to-l from-transparent to-desert-gold/50" />
+
+                  <div className="pt-12">
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="w-full py-6 md:py-8 border border-desert-gold/50 text-text-primary bg-transparent relative overflow-hidden group shadow-[0_0_50px_rgba(201,169,97,0.1)]"
+                      style={{
+                        fontSize: '13px',
+                        letterSpacing: '10px',
+                        fontWeight: 300,
+                        textTransform: 'uppercase',
+                        transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1)'
+                      }}
+                      onMouseEnter={(e) => {
+                        if (!loading && !window.matchMedia("(pointer: coarse)").matches) {
+                          e.currentTarget.style.backgroundColor = 'var(--desert-gold)';
+                          e.currentTarget.style.color = 'var(--obsidian-midnight)';
+                          e.currentTarget.style.boxShadow = '0 0 80px rgba(201, 169, 97, 0.5)';
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = 'transparent';
+                        e.currentTarget.style.color = 'var(--text-primary)';
+                        e.currentTarget.style.boxShadow = '0 0 50px rgba(201, 169, 97, 0.1)';
+                      }}
+                    >
+                      <span className="relative z-10">{loading ? 'TRANSMITTING...' : 'INITIATE REQUEST'}</span>
+                      <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                    </button>
+                  </div>
+                </form>
+              </div>
+            */}
+
+            {/* Sophisticated Request Access UI */}
+            <div className="relative flex flex-col items-center">
+              {/* Central Archive Medallion */}
+              <div className="mb-20 relative flex items-center justify-center">
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                  className="absolute w-48 h-48 border border-desert-gold/10 rounded-full"
+                />
+                <motion.div
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                  className="absolute w-40 h-40 border border-desert-gold/20 rounded-full border-dashed"
+                />
+                <div className="w-20 h-20 relative flex items-center justify-center">
+                  <div className="absolute inset-0 border border-desert-gold/40 rotate-45" />
+                  <div className="w-12 h-12 border-2 border-desert-gold/70 rotate-45 flex items-center justify-center">
+                    <motion.div
+                      animate={{ opacity: [0.4, 1, 0.4] }}
+                      transition={{ duration: 4, repeat: Infinity }}
+                      className="w-4 h-4 bg-desert-gold shadow-[0_0_20px_rgba(201,169,97,0.8)]"
+                    />
+                  </div>
                 </div>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-16 md:space-y-24 relative z-10">
-                <div className="space-y-14">
-                  <div className="relative group/field">
-                    <input
-                      type="text"
-                      name="name"
-                      placeholder="YOUR LEGEACY NAME"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      required
-                      className="w-full bg-transparent pb-5 outline-none border-b border-desert-gold/20 focus:border-desert-gold transition-all text-center tracking-[6px] placeholder:opacity-30"
-                      style={{
-                        color: 'var(--text-primary)',
-                        fontSize: '12px',
-                        textTransform: 'uppercase'
-                      }}
-                    />
-                  </div>
-                  <div className="relative group/field">
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="VIRTUAL ADDRESS (EMAIL)"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                      className="w-full bg-transparent pb-5 outline-none border-b border-desert-gold/20 focus:border-desert-gold transition-all text-center tracking-[6px] placeholder:opacity-30"
-                      style={{
-                        color: 'var(--text-primary)',
-                        fontSize: '12px',
-                        textTransform: 'uppercase'
-                      }}
-                    />
-                  </div>
-                  <div className="relative group/field">
-                    <textarea
-                      name="reason"
-                      placeholder="DESCRIBE YOUR RESONANCE WITH HERIT"
-                      value={reason}
-                      onChange={(e) => setReason(e.target.value)}
-                      required
-                      rows={2}
-                      className="w-full bg-transparent pb-5 outline-none border-b border-desert-gold/20 focus:border-desert-gold transition-all text-center tracking-[5px] placeholder:opacity-30 resize-none overflow-hidden"
-                      style={{
-                        color: 'var(--text-primary)',
-                        fontSize: '12px',
-                        textTransform: 'uppercase',
-                        lineHeight: '2.2'
-                      }}
-                    />
-                  </div>
-                </div>
+              <div className="w-full max-w-md mx-auto relative group">
+                {/* Floating Glass Container */}
+                <div className="absolute -inset-1 bg-gradient-to-b from-desert-gold/20 to-transparent blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-1000" />
 
-                <div className="pt-12">
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="w-full py-6 md:py-8 border border-desert-gold/50 text-text-primary bg-transparent relative overflow-hidden group shadow-[0_0_50px_rgba(201,169,97,0.1)]"
-                    style={{
-                      fontSize: '13px',
-                      letterSpacing: '10px',
-                      fontWeight: 300,
-                      textTransform: 'uppercase',
-                      transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1)'
-                    }}
-                    onMouseEnter={(e) => {
-                      if (!loading && !window.matchMedia("(pointer: coarse)").matches) {
-                        e.currentTarget.style.backgroundColor = 'var(--desert-gold)';
-                        e.currentTarget.style.color = 'var(--obsidian-midnight)';
-                        e.currentTarget.style.boxShadow = '0 0 80px rgba(201, 169, 97, 0.5)';
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = 'transparent';
-                      e.currentTarget.style.color = 'var(--text-primary)';
-                      e.currentTarget.style.boxShadow = '0 0 50px rgba(201, 169, 97, 0.1)';
-                    }}
-                  >
-                    <span className="relative z-10">{loading ? 'TRANSMITTING...' : 'INITIATE REQUEST'}</span>
-                    <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-                  </button>
+                <div className="relative bg-[#0A0E1A]/40 backdrop-blur-md border border-desert-gold/20 p-10 md:p-14 shadow-2xl">
+                  <h2 className="text-center mb-12 text-cream-primary text-[14px] tracking-[8px] uppercase font-light italic opacity-80">
+                    Archive Intake
+                  </h2>
+
+                  <form onSubmit={handleSubmit} className="space-y-12 relative z-10">
+                    <div className="space-y-10">
+                      <div className="relative group/field">
+                        <input
+                          type="text"
+                          name="name"
+                          placeholder="IDENTITY"
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          required
+                          className="w-full bg-transparent pb-4 outline-none border-b border-desert-gold/10 focus:border-desert-gold transition-all text-center tracking-[6px] placeholder:opacity-30 placeholder:tracking-[10px]"
+                          style={{
+                            color: 'var(--text-primary)',
+                            fontSize: '11px',
+                            textTransform: 'uppercase'
+                          }}
+                        />
+                      </div>
+                      <div className="relative group/field">
+                        <input
+                          type="email"
+                          name="email"
+                          placeholder="DIGITAL ADDRESS"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          required
+                          className="w-full bg-transparent pb-4 outline-none border-b border-desert-gold/10 focus:border-desert-gold transition-all text-center tracking-[6px] placeholder:opacity-30 placeholder:tracking-[10px]"
+                          style={{
+                            color: 'var(--text-primary)',
+                            fontSize: '11px',
+                            textTransform: 'uppercase'
+                          }}
+                        />
+                      </div>
+                      <div className="relative group/field">
+                        <textarea
+                          name="reason"
+                          placeholder="RESONANCE"
+                          value={reason}
+                          onChange={(e) => setReason(e.target.value)}
+                          required
+                          rows={2}
+                          className="w-full bg-transparent pb-4 outline-none border-b border-desert-gold/10 focus:border-desert-gold transition-all text-center tracking-[6px] placeholder:opacity-30 placeholder:tracking-[10px] resize-none overflow-hidden"
+                          style={{
+                            color: 'var(--text-primary)',
+                            fontSize: '11px',
+                            textTransform: 'uppercase',
+                            lineHeight: '2.2'
+                          }}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="pt-8">
+                      <button
+                        type="submit"
+                        disabled={loading}
+                        className="w-full py-6 bg-transparent border border-desert-gold/40 text-desert-gold relative overflow-hidden group hover:text-obsidian-midnight transition-colors duration-700"
+                        style={{
+                          fontSize: '11px',
+                          letterSpacing: '8px',
+                          textTransform: 'uppercase',
+                        }}
+                      >
+                        <span className="relative z-10">{loading ? 'STABILIZING...' : 'INITIATE REQUEST'}</span>
+                        <motion.div
+                          className="absolute inset-0 bg-desert-gold translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]"
+                        />
+                      </button>
+                    </div>
+                  </form>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
         ) : (
@@ -378,7 +498,6 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
             animate={{ opacity: 1, y: 0 }}
             className="text-center py-40 px-6 relative"
           >
-            {/* Success Glow halo */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-desert-gold/10 rounded-full blur-[100px] pointer-events-none" />
 
             <div className="w-20 h-20 rotate-45 border border-desert-gold/40 mx-auto mb-16 flex items-center justify-center">
@@ -388,18 +507,17 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
                 className="w-8 h-8 bg-desert-gold/40 shadow-[0_0_30px_rgba(201,169,97,0.6)]"
               />
             </div>
-            <h3 style={{ fontSize: '28px', fontWeight: 300, color: 'var(--cream-primary)', letterSpacing: '8px', textTransform: 'uppercase', fontFamily: "'Bodoni Moda', serif", fontStyle: 'italic' }}>
-              Admission Noted.
+            <h3 className="text-cream-primary text-[24px] font-light tracking-[10px] uppercase italic">
+              Record Locked.
             </h3>
-            <p style={{ fontSize: '15px', color: 'var(--desert-gold)', marginTop: '32px', letterSpacing: '2px', opacity: 0.8, fontFamily: "'Outfit', sans-serif" }}>
-              Our archives are processing your request.
+            <p className="text-desert-gold text-[13px] mt-8 tracking-[3px] opacity-60 uppercase">
+              The archive has received your signature.
             </p>
           </motion.div>
         )}
       </div>
 
-
-      <div className="text-center mt-32 mb-16 text-[14px] text-desert-gold tracking-[2px] opacity-70 relative z-10 w-full hover:opacity-100 transition-opacity">
+      <div className="text-center mt-32 mb-16 text-[14px] text-desert-gold tracking-[2px] opacity-20 relative z-10 w-full hover:opacity-100 transition-opacity">
         <a href="mailto:herit@heritlasaty.com" className="hover:tracking-[3px] transition-all duration-500">herit@heritlasaty.com</a>
       </div>
     </section>
