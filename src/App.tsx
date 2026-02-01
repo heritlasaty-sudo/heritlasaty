@@ -159,11 +159,10 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
   const mouseXSpring = useSpring(x, { stiffness: 150, damping: 30 });
   const mouseYSpring = useSpring(y, { stiffness: 150, damping: 30 });
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["3deg", "-3deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-3deg", "3deg"]);
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["5deg", "-5deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-5deg", "5deg"]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    // Disable parallax on touch devices to avoid layout glitches
     if (window.matchMedia("(pointer: coarse)").matches) return;
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
@@ -210,7 +209,6 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
       } else {
         throw new Error('Netlify submission failed');
       }
-
     } catch (err) {
       console.error('Transmission fault:', err);
       // Still show success UI to user for premium feel
@@ -223,29 +221,29 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
 
   return (
     <section
-      className="w-full flex flex-col items-center justify-center pt-32 pb-32 md:pt-80 md:pb-60 overflow-hidden relative"
+      className="w-full flex flex-col items-center justify-center pt-32 md:pt-60 pb-10 overflow-hidden relative"
       style={{
         backgroundColor: 'var(--obsidian-midnight)',
-        perspective: '1200px'
+        perspective: '1400px'
       }}
     >
       <motion.div
         animate={{
-          opacity: [0.1, 0.25, 0.1],
-          scale: [1, 1.1, 1]
+          opacity: [0.1, 0.2, 0.1],
+          scale: [1, 1.05, 1]
         }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute w-[600px] md:w-[1200px] h-[600px] md:h-[1200px] rounded-full pointer-events-none"
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute w-[800px] md:w-[1400px] h-[800px] md:h-[1400px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(201, 169, 97, 0.15) 0%, transparent 70%)',
-          top: '40%',
+          background: 'radial-gradient(circle, rgba(201, 169, 97, 0.1) 0%, transparent 70%)',
+          top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
           zIndex: 0
         }}
       />
 
-      <div className="mb-10 md:mb-20 w-px h-20 md:h-32 bg-gradient-to-b from-transparent via-desert-gold/50 to-transparent relative z-10" />
+      <div className="mb-12 md:mb-24 w-px h-24 md:h-40 bg-gradient-to-b from-transparent via-desert-gold/40 to-transparent relative z-10" />
 
       <motion.div
         ref={containerRef}
@@ -258,166 +256,183 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
           margin: '0 auto',
           willChange: 'transform'
         }}
-        className="w-full max-w-[680px] px-6 relative pointer-events-auto"
+        className="w-full max-w-[720px] px-5 md:px-10 relative pointer-events-auto"
       >
         {!submitted ? (
           <div className="relative group">
-            {/* Background decorative frame - adjusted for mobile */}
+            {/* The Alfiz Rectangular Frame */}
             <div
-              className="absolute -inset-4 md:-inset-16 border border-desert-gold/20 pointer-events-none"
+              className="absolute -inset-6 md:-inset-16 border-2 border-desert-gold/20 pointer-events-none"
               style={{
-                borderRadius: '4px',
-                background: 'linear-gradient(135deg, rgba(201, 169, 97, 0.15) 0%, transparent 50%, rgba(201, 169, 97, 0.15) 100%)',
-                boxShadow: '0 50px 100px rgba(0,0,0,0.9), inset 0 0 100px rgba(201,169,97,0.1)',
-                transform: 'translateZ(-30px)'
+                borderRadius: '2px',
+                background: 'linear-gradient(135deg, rgba(201, 169, 97, 0.08) 0%, transparent 50%, rgba(201, 169, 97, 0.08) 100%)',
+                boxShadow: '0 40px 100px rgba(0,0,0,0.8), inset 0 0 80px rgba(201,169,97,0.05)',
+                transform: 'translateZ(-40px)'
               }}
             >
+              {/* Spandrel Patterns */}
               <div
-                className="absolute inset-0 opacity-[0.1] md:opacity-[0.25]"
+                className="absolute top-0 left-0 w-32 md:w-64 h-32 md:h-64 opacity-[0.15]"
                 style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l7 23 23 7-23 7-7 23-7-23-23-7 23-7z' fill='none' stroke='%23C9A961' stroke-width='0.4'/%3E%3C/svg%3E")`,
-                  backgroundSize: '30px 30px'
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l30 30-30 30L0 30z' fill='none' stroke='%23C9A961' stroke-width='0.5'/%3E%3Cpath d='M30 15l15 15-15 15-15-15z' fill='none' stroke='%23C9A961' stroke-width='0.25'/%3E%3C/svg%3E")`,
+                  backgroundSize: '30px 30px',
+                  maskImage: 'radial-gradient(circle at top left, black, transparent 85%)',
+                  WebkitMaskImage: 'radial-gradient(circle at top left, black, transparent 85%)',
+                }}
+              />
+              <div
+                className="absolute top-0 right-0 w-32 md:w-64 h-32 md:h-64 opacity-[0.15]"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l30 30-30 30L0 30z' fill='none' stroke='%23C9A961' stroke-width='0.5'/%3E%3Cpath d='M30 15l15 15-15 15-15-15z' fill='none' stroke='%23C9A961' stroke-width='0.25'/%3E%3C/svg%3E")`,
+                  backgroundSize: '30px 30px',
+                  maskImage: 'radial-gradient(circle at top right, black, transparent 85%)',
+                  WebkitMaskImage: 'radial-gradient(circle at top right, black, transparent 85%)',
                 }}
               />
             </div>
 
+            {/* The Horseshoe Arch Container */}
             <div
-              className="relative p-8 md:p-24 border border-desert-gold/40 shadow-[0_-40px_150px_-20px_rgba(201,169,97,0.4)] overflow-hidden"
+              className="relative p-10 md:p-24 border-2 border-desert-gold/40 shadow-[0_-20px_80px_rgba(201,169,97,0.2)] overflow-hidden"
               style={{
                 borderTopLeftRadius: '50% 100%',
                 borderTopRightRadius: '50% 100%',
-                background: 'radial-gradient(circle at 50% 5%, rgba(201, 169, 97, 0.25) 0%, rgba(10, 14, 26, 0.6) 100%)',
-                boxShadow: 'inset 0 4px 30px rgba(255,255,255,0.1), 0 -20px 120px rgba(0,0,0,1)',
+                background: 'radial-gradient(circle at 50% 0%, rgba(201, 169, 97, 0.15) 0%, rgba(10, 14, 26, 0.95) 100%)',
+                boxShadow: 'inset 0 4px 40px rgba(255,255,255,0.05), 0 -20px 100px rgba(0,0,0,1)',
                 transform: 'translateZ(20px)'
               }}
             >
-              <div
-                className="absolute inset-0 opacity-[0.25] pointer-events-none"
-                style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 50h100M50 0v100M25 25l50 50M75 25l-50 50' stroke='%23C9A961' stroke-width='0.5'/%3E%3Ccircle cx='50' cy='50' r='2' fill='%23C9A961'/%3E%3C/svg%3E")`,
-                  backgroundSize: '100px 100px'
-                }}
-              />
+              {/* Dynamic Light Reflection Layer */}
               <div
                 className="absolute inset-0 opacity-10 pointer-events-none"
                 style={{
-                  background: 'linear-gradient(135deg, transparent 45%, rgba(255,255,255,0.05) 50%, transparent 55%)',
+                  background: 'linear-gradient(135deg, transparent 45%, rgba(255,255,255,0.1) 50%, transparent 55%)',
                   backgroundSize: '200% 200%',
-                  animation: 'shimmer 12s infinite linear',
-                  willChange: 'background-position'
+                  animation: 'shimmer 12s infinite linear'
                 }}
               />
 
-              <div className="text-center mb-10 md:mb-20 relative z-10" style={{ transform: "translateZ(40px)" }}>
-                <div className="flex justify-center items-center gap-4 md:gap-6 mb-8 md:mb-16">
-                  <motion.div animate={{ height: [0, 48, 0] }} transition={{ duration: 3, repeat: Infinity }} className="w-px bg-gradient-to-t from-desert-gold/80 to-transparent" />
+              <div className="text-center mb-12 md:mb-20 relative z-10" style={{ transform: "translateZ(50px)" }}>
+                <div className="flex justify-center items-center gap-5 md:gap-8 mb-10 md:mb-16">
+                  <motion.div animate={{ height: [0, 64, 0] }} transition={{ duration: 4, repeat: Infinity }} className="w-px bg-gradient-to-t from-desert-gold/80 to-transparent" />
                   <div className="relative">
-                    <div className="w-8 h-8 md:w-10 md:h-10 rotate-45 border border-desert-gold/60 flex items-center justify-center">
+                    <div className="w-10 h-10 md:w-12 md:h-12 rotate-45 border border-desert-gold/60 flex items-center justify-center">
                       <motion.div
-                        animate={{ opacity: [0.3, 1, 0.3] }}
-                        transition={{ duration: 4, repeat: Infinity }}
-                        className="w-4 h-4 md:w-5 md:h-5 rotate-45 bg-desert-gold/30 border border-desert-gold/80"
+                        animate={{ opacity: [0.3, 1, 0.3], scale: [0.8, 1.1, 0.8] }}
+                        transition={{ duration: 5, repeat: Infinity }}
+                        className="w-6 h-6 rotate-45 bg-desert-gold/20 border border-desert-gold/80"
                       />
                     </div>
                   </div>
-                  <motion.div animate={{ height: [0, 48, 0] }} transition={{ duration: 3, repeat: Infinity }} className="w-px bg-gradient-to-t from-desert-gold/80 to-transparent" />
+                  <motion.div animate={{ height: [0, 64, 0] }} transition={{ duration: 4, repeat: Infinity }} className="w-px bg-gradient-to-t from-desert-gold/80 to-transparent" />
                 </div>
 
                 <h2
-                  className="fade-in-1 mb-4 md:mb-6"
+                  className="mb-6 md:mb-8"
                   style={{
-                    fontSize: 'clamp(28px, 8vw, 48px)',
+                    fontSize: 'clamp(32px, 8vw, 56px)',
                     fontWeight: 400,
                     color: 'var(--cream-primary)',
-                    letterSpacing: '4px',
+                    letterSpacing: '5px',
                     fontFamily: "'Bodoni Moda', serif",
                     fontStyle: 'italic',
-                    textShadow: '0 10px 20px rgba(0,0,0,0.5)'
+                    textShadow: '0 5px 15px rgba(0,0,0,0.8)'
                   }}
                 >
                   The Gate
                 </h2>
-                <div className="w-12 h-px bg-desert-gold/40 mx-auto mb-6 md:mb-8" />
+                <div className="w-16 h-px bg-desert-gold/50 mx-auto mb-8 md:mb-10" />
                 <p
-                  className="fade-in-1 mx-auto max-w-[440px]"
+                  className="mx-auto max-w-[480px]"
                   style={{
-                    fontSize: 'clamp(13px, 3.5vw, 15px)',
+                    fontSize: 'clamp(14px, 3.5vw, 16px)',
                     lineHeight: '1.8',
                     color: 'var(--text-secondary)',
                     letterSpacing: '1.5px',
-                    fontFamily: "'Outfit', sans-serif"
+                    fontFamily: "'Outfit', sans-serif",
+                    padding: '0 10px'
                   }}
                 >
-                  HERIT LASATY is reserved for those who understand its value. Request consideration.
+                  HERIT LASATY is reserved for those who seek depth over surface. Request consideration.
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit} className="fade-in-2 space-y-10 md:space-y-16 relative z-10">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="YOUR NAME"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                  autoComplete="name"
-                  className="w-full bg-transparent pb-4 outline-none transition-all placeholder:opacity-50 focus:border-cream-primary"
-                  style={{
-                    borderBottom: '1px solid var(--moonlit-steel)',
-                    color: 'var(--text-primary)',
-                    fontSize: '13px',
-                    fontFamily: 'inherit',
-                    letterSpacing: '3px',
-                    textTransform: 'uppercase'
-                  }}
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="YOUR EMAIL"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  autoComplete="email"
-                  className="w-full bg-transparent pb-4 outline-none transition-all placeholder:opacity-50 focus:border-cream-primary"
-                  style={{
-                    borderBottom: '1px solid var(--moonlit-steel)',
-                    color: 'var(--text-primary)',
-                    fontSize: '13px',
-                    fontFamily: 'inherit',
-                    letterSpacing: '3px',
-                    textTransform: 'uppercase'
-                  }}
-                />
-                <textarea
-                  name="reason"
-                  placeholder="WHY DO YOU SEEK HERIT LASATY?"
-                  value={reason}
-                  onChange={(e) => setReason(e.target.value)}
-                  required
-                  rows={2}
-                  className="w-full bg-transparent pb-4 outline-none transition-all placeholder:opacity-50 focus:border-cream-primary resize-none"
-                  style={{
-                    borderBottom: '1px solid var(--moonlit-steel)',
-                    color: 'var(--text-primary)',
-                    fontSize: '13px',
-                    fontFamily: 'inherit',
-                    letterSpacing: '3px',
-                    textTransform: 'uppercase'
-                  }}
-                />
-                <div className="pt-2 md:pt-4">
+              <form onSubmit={handleSubmit} className="space-y-12 md:space-y-20 relative z-10">
+                <div className="relative group/input">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="YOUR NAME"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                    autoComplete="name"
+                    className="w-full bg-transparent pb-4 outline-none transition-all placeholder:text-moonlit-steel border-b border-moonlit-steel focus:border-desert-gold"
+                    style={{
+                      color: 'var(--text-primary)',
+                      fontSize: '13px',
+                      fontFamily: 'inherit',
+                      letterSpacing: '4px',
+                      textTransform: 'uppercase',
+                      textAlign: 'center'
+                    }}
+                  />
+                </div>
+
+                <div className="relative group/input">
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="YOUR EMAIL"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    autoComplete="email"
+                    className="w-full bg-transparent pb-4 outline-none transition-all placeholder:text-moonlit-steel border-b border-moonlit-steel focus:border-desert-gold"
+                    style={{
+                      color: 'var(--text-primary)',
+                      fontSize: '13px',
+                      fontFamily: 'inherit',
+                      letterSpacing: '4px',
+                      textTransform: 'uppercase',
+                      textAlign: 'center'
+                    }}
+                  />
+                </div>
+
+                <div className="relative group/input">
+                  <textarea
+                    name="reason"
+                    placeholder="WHY DO YOU SEEK HERIT LASATY?"
+                    value={reason}
+                    onChange={(e) => setReason(e.target.value)}
+                    required
+                    rows={2}
+                    className="w-full bg-transparent pb-4 outline-none transition-all placeholder:text-moonlit-steel border-b border-moonlit-steel focus:border-desert-gold resize-none"
+                    style={{
+                      color: 'var(--text-primary)',
+                      fontSize: '13px',
+                      fontFamily: 'inherit',
+                      letterSpacing: '4px',
+                      textTransform: 'uppercase',
+                      textAlign: 'center',
+                      lineHeight: '2'
+                    }}
+                  />
+                </div>
+
+                <div className="pt-6 md:pt-10">
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full py-4 md:py-5 transition-all duration-700 hover:shadow-[0_0_30px_rgba(201,169,97,0.2)] focus:ring-1 focus:ring-desert-gold/50 outline-none"
+                    className="w-full py-5 md:py-6 transition-all duration-700 hover:shadow-[0_0_50px_rgba(201,169,97,0.3)] relative overflow-hidden group"
                     style={{
                       border: '1px solid var(--desert-gold)',
                       color: 'var(--text-primary)',
                       backgroundColor: 'transparent',
                       fontSize: '14px',
                       fontFamily: 'inherit',
-                      letterSpacing: '4px',
+                      letterSpacing: '6px',
                       fontWeight: 300,
                       cursor: loading ? 'not-allowed' : 'pointer',
                       opacity: loading ? 0.6 : 1,
@@ -434,31 +449,35 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
                       e.currentTarget.style.color = 'var(--text-primary)';
                     }}
                   >
-                    {loading ? 'SENDING...' : 'SUBMIT REQUEST'}
+                    <span className="relative z-10">{loading ? 'TRANSMITTING...' : 'SUBMIT REQUEST'}</span>
                   </button>
-                  <p className="text-center mt-6 md:mt-8 text-[10px] md:text-[11px] text-desert-gold tracking-[1px] opacity-80">
-                    We will respond within 48 hours if alignment is found.
+                  <p className="text-center mt-10 md:mt-12 text-[10px] md:text-[11px] text-desert-gold tracking-[2px] opacity-70 uppercase">
+                    Refinement takes time. We will respond within 48 hours.
                   </p>
                 </div>
               </form>
             </div>
           </div>
         ) : (
-          <div className="fade-in-1 text-center py-20 px-6">
-            <div className="w-12 h-12 rotate-45 border border-desert-gold/40 flex items-center justify-center mx-auto mb-10">
-              <div className="w-6 h-6 rotate-45 bg-desert-gold/20" />
+          <div className="text-center py-24 md:py-32 px-6">
+            <div className="w-16 h-16 md:w-20 md:h-20 rotate-45 border border-desert-gold/40 flex items-center justify-center mx-auto mb-12">
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                className="w-8 h-8 md:w-10 md:h-10 rotate-45 bg-desert-gold/30"
+              />
             </div>
-            <h3 style={{ fontSize: '20px', fontWeight: 300, color: 'var(--cream-primary)', letterSpacing: '4px', lineHeight: 1.6, textTransform: 'uppercase', fontFamily: "'Outfit', sans-serif" }}>
-              Request received.
+            <h3 style={{ fontSize: '24px', fontWeight: 300, color: 'var(--cream-primary)', letterSpacing: '6px', lineHeight: 1.6, textTransform: 'uppercase', fontFamily: "'Outfit', sans-serif" }}>
+              Alignment Sought.
             </h3>
-            <p style={{ fontSize: '14px', color: 'var(--desert-gold)', marginTop: '24px', letterSpacing: '1px', opacity: 0.8 }}>
-              We will contact you within 48 hours if alignment is found.
+            <p style={{ fontSize: '14px', color: 'var(--desert-gold)', marginTop: '32px', letterSpacing: '2px', opacity: 0.8, textTransform: 'uppercase' }}>
+              We will contact you shortly if our souls resonate.
             </p>
           </div>
         )}
       </motion.div>
 
-      <div className="text-center mt-16 md:mt-24 text-[13px] md:text-[14px] text-desert-gold tracking-[0.5px]">
+      <div className="text-center mt-20 md:mt-32 mb-10 text-[13px] md:text-[14px] text-desert-gold tracking-[1px] relative z-10">
         herit@heritlasaty.com
       </div>
     </section>
@@ -473,28 +492,29 @@ function App() {
       overflow: 'hidden',
       backgroundColor: 'var(--obsidian-midnight)',
       minHeight: '100vh',
-      width: '100%'
+      width: '100%',
+      position: 'relative'
     }}>
       <Logo />
       <HeroSection />
       <MythSection />
       <CTASection onShowNotification={() => {
         setShowToast(true);
-        setTimeout(() => setShowToast(false), 4000);
+        setTimeout(() => setShowToast(false), 5000);
       }} />
 
       <AnimatePresence>
         {showToast && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            className="fixed inset-0 flex items-center justify-center z-[200] pointer-events-none p-6"
+            initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+            animate={{ opacity: 1, backdropFilter: 'blur(10px)' }}
+            exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+            className="fixed inset-0 flex items-center justify-center z-[300] pointer-events-none p-6"
           >
-            <div className="bg-[#0A0E1A]/95 backdrop-blur-xl border-y border-desert-gold/30 py-12 w-full text-center shadow-[0_0_150px_rgba(0,0,0,1)]">
-              <p className="text-[14px] tracking-[6px] text-desert-gold uppercase mb-4">Request Received</p>
-              <p className="text-[11px] tracking-[2px] text-cream-primary uppercase opacity-70">
-                We will contact you within 48 hours if alignment is found.
+            <div className="bg-[#0A0E1A]/90 border-y border-desert-gold/30 py-16 w-full text-center shadow-[0_0_150px_rgba(0,0,0,1)]">
+              <p className="text-[16px] tracking-[8px] text-desert-gold uppercase mb-6">Transmission Received</p>
+              <p className="text-[12px] tracking-[3px] text-cream-primary uppercase opacity-60 max-w-sm mx-auto leading-loose">
+                Your request has been placed in the archives of Herit Lasaty. Expect a response if alignment is found.
               </p>
             </div>
           </motion.div>

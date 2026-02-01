@@ -34,16 +34,27 @@ textarea:-webkit-autofill,
 textarea:-webkit-autofill:hover,
 textarea:-webkit-autofill:focus,
 textarea:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 1000px var(--obsidian-midnight) inset !important;
-  -webkit-text-fill-color: var(--text-primary) !important;
-  caret-color: var(--text-primary) !important;
-  transition: background-color 5000s ease-in-out 0s;
+  -webkit-box-shadow: 0 0 0 1000px #0A0E1A inset !important;
+  -webkit-text-fill-color: #F5F5F5 !important;
+  caret-color: #F5F5F5 !important;
+  transition: background-color 5000000s ease-in-out 0s;
 }
 
-::placeholder {
-  color: var(--text-secondary) !important;
-  opacity: 0.5 !important;
+/* Ensure no background flicker on inputs */
+input,
+textarea {
+  background-color: transparent !important;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 0;
 }
+
+
+::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.4;
+}
+
 
 
 .minimalist-caps {
