@@ -157,16 +157,14 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
     setLoading(true);
 
     try {
-      const formData = new URLSearchParams();
-      formData.append('form-name', 'waitlist');
-      formData.append('name', name.trim());
-      formData.append('email', email.trim());
-      formData.append('reason', reason.trim());
-
-      const response = await fetch("/", {
+      const response = await fetch("https://formspree.io/f/mqaebrda", { // Placeholder Formspree ID
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: formData.toString(),
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          message: reason.trim()
+        }),
       });
 
       if (response.ok) {
@@ -178,7 +176,7 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
           setReason('');
         }, 150);
       } else {
-        throw new Error('Netlify submission failed');
+        throw new Error('Formspree submission failed');
       }
     } catch (err) {
       console.error('Transmission fault:', err);
