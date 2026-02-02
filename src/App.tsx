@@ -157,14 +157,16 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
     setLoading(true);
 
     try {
-      const response = await fetch("https://formspree.io/f/mqaebrda", { // Placeholder Formspree ID
+      const formData = new URLSearchParams();
+      formData.append('form-name', 'waitlist');
+      formData.append('name', name.trim());
+      formData.append('email', email.trim());
+      formData.append('reason', reason.trim());
+
+      const response = await fetch("/", {
         method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify({
-          name: name.trim(),
-          email: email.trim(),
-          message: reason.trim()
-        }),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: formData.toString(),
       });
 
       if (response.ok) {
@@ -176,7 +178,7 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
           setReason('');
         }, 150);
       } else {
-        throw new Error('Formspree submission failed');
+        throw new Error('Netlify submission failed');
       }
     } catch (err) {
       console.error('Transmission fault:', err);
@@ -515,7 +517,7 @@ function CTASection({ onShowNotification }: { onShowNotification: () => void }) 
         )}
       </div>
 
-      <div className="text-center mt-32 mb-16 text-[14px] text-desert-gold tracking-[2px] opacity-20 relative z-10 w-full hover:opacity-100 transition-opacity">
+      <div className="text-center mt-32 mb-16 text-[14px] text-desert-gold tracking-[2px] opacity-70 relative z-10 w-full hover:opacity-100 transition-opacity">
         <a href="mailto:herit@heritlasaty.com" className="hover:tracking-[3px] transition-all duration-500">herit@heritlasaty.com</a>
       </div>
     </section>

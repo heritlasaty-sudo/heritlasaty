@@ -21,6 +21,13 @@
 
 
 
+  <!-- Hidden form for Netlify Bot discovery -->
+  <form name="waitlist" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="name" />
+    <input type="email" name="email" />
+    <textarea name="reason"></textarea>
+  </form>
+
   <script type="module" src="/src/main.tsx"></script>
 </body>
 
